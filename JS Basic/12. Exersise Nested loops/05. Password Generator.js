@@ -1,0 +1,4 @@
+function passwordGenerator() {
+
+}
+passwordGenerator([])
