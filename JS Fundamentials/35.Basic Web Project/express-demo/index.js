@@ -1,7 +1,7 @@
 let express = require('express')
+let app = express()
 let handlebars = require('express-handlebars')
 let fs = require('fs')
-let app = express()
 let port = 3000
 // config for handlebars
 app.engine('hbs', handlebars())
