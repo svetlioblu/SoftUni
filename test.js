@@ -1,3 +1,3 @@
-let a = [1,2]
-a[1] = 5
-console.log(a)
+let a = [ 3, 4]
+
+console.log(a.slice(-3))
