@@ -21,6 +21,7 @@ function solve(arr) {
         return result.join('\n')
     }
 }
+
 console.log(solve(['add',
     'add',
     'add',
