@@ -1,3 +1,3 @@
-let a = [ 3, 4]
+let a = [ '3', 4]
 
-console.log(a.slice(-3))
+console.log(a.includes(3))
