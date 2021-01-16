@@ -1,7 +1,7 @@
 function solve(arr, n) {
-    let temp = 0
+    
     for (let i = 0; i < n; i++) {
-        temp = arr.pop()
+        let temp = arr.pop()
         arr.unshift(temp)
     }
     return arr.join(' ')
