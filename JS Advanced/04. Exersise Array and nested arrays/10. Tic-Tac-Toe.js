@@ -7,6 +7,7 @@ function solve(input) {
 
     let line = input.shift()
     let player = "X"
+    let isWinner = false
     while (line) {
 
         let [row, col] = line.split(' ')
@@ -29,15 +30,15 @@ function solve(input) {
         line = input.shift()
         player = player === "X" ? "O" : "X"
     }
+    return `The game ended! Nobody wins :(\n${printDashboard(dashboard)}`
 
-
-    function isThereFreeSlot(dashboard) {
-        let isEnd = false
-        for (let row of dashboard) {
-            row.includes(false) ? isEnd = true : false
+        function isThereFreeSlot(dashboard) {
+            let isEnd = false
+            for (let row of dashboard) {
+                row.includes(false) ? isEnd = true : false
+            }
+            return isEnd
         }
-        return isEnd
-    }
     function printDashboard(dashboard) {
         let print = ``
         for (let row of dashboard) {
@@ -83,8 +84,8 @@ console.log(solve(["0 1",
 "1 0",
 "1 1",
 "1 2",
-]
-
-
+"2 2",
+"2 1",
+"0 0"]
 
 ));
