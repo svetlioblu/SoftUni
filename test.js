@@ -1,6 +1,4 @@
-let obj = { a: 1, b: 2 }
-let copy ={}
+let temp =6
+let tempSettings =6
 
-Object.assign(copy,obj)
-copy.a = 5
-console.log(obj);
+console.log((temp < tempSettings && temp != tempSettings) ? temp += 1 : temp -= 1)
