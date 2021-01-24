@@ -7,11 +7,6 @@
 //         match = reg.exec(str)
 //     }
 //     console.log(result);
-let arr = ['dd', 'dd','dd','dd']
-let b = arr.map((x, i) => {
-    if (i > 0) {
-        return x[0].toUpperCase() + x.substring(1)
-    }
-    return x
-})
-console.log(b);
+let arr = {}
+
+console.log(arr);
