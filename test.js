@@ -9,4 +9,4 @@
 //     console.log(result);
 let arr = {}
 
-console.log(arr);
+console.log(Math.trunc(0.2207357859531773*100))
