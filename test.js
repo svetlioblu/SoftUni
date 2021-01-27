@@ -7,6 +7,10 @@
 //         match = reg.exec(str)
 //     }
 //     console.log(result);
-let arr = {}
+let arr = 50
 
-console.log(Math.trunc(0.2207357859531773*100))
+let test = (function (arr) {
+   
+    console.log(arr)
+})()
+test
