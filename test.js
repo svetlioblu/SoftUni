@@ -7,10 +7,14 @@
 //         match = reg.exec(str)
 //     }
 //     console.log(result);
-let arr = 50
 
-let test = (function (arr) {
-   
-    console.log(arr)
-})()
-test
+function A(name) {
+    
+    return B
+    function B() {
+        console.log('inside b',name);
+    }
+}
+let my = A(30)
+my()
+
