@@ -8,13 +8,9 @@
 //     }
 //     console.log(result);
 
-function A(name) {
-    
-    return B
-    function B() {
-        console.log('inside b',name);
-    }
+let a={name:'ivan'}
+let b = Object.create(a)
+b.lastname ='Mihailov'
+for(key in Object.getPrototypeOf(b)) {
+    console.log(key);
 }
-let my = A(30)
-my()
-
