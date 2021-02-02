@@ -8,9 +8,4 @@
 //     }
 //     console.log(result);
 
-let a={name:'ivan'}
-let b = Object.create(a)
-b.lastname ='Mihailov'
-for(key in Object.getPrototypeOf(b)) {
-    console.log(key);
-}
+console.log(5);
