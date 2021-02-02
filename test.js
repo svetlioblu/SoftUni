@@ -8,4 +8,5 @@
 //     }
 //     console.log(result);
 
-console.log(isNaN(undefined));
+let a = 'Invalid char'
+console.log(a.includes('Invalid'));
