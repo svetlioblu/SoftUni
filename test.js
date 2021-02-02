@@ -8,4 +8,4 @@
 //     }
 //     console.log(result);
 
-console.log(5);
+console.log(isNaN(undefined));
