@@ -8,5 +8,5 @@
 //     }
 //     console.log(result);
 
-let a = 'Invalid char'
-console.log(a.includes('Invalid'));
+let a = {a:6}
+console.log(a.b);
