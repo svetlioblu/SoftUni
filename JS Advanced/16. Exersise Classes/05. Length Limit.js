@@ -25,11 +25,7 @@ class Stringer {
         }
     }
 }
-let test = new Stringer("Test", 5);
+let test = new Stringer("Viktor", 6);
 test.decrease(3);
-console.log(test.toString()); 
-test.decrease(5);
-console.log(test.toString())
-test.increase(4); 
-console.log(test.toString()); 
+console.log(test.innerLength);
 
