@@ -9,5 +9,6 @@
 //     console.log(result);
 
 
+let result = 'the quick brown fox jumps over the lazy dog'
+console.log(result.substr(0,10).trim());
 
-console.log(result);
