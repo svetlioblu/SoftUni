@@ -22,4 +22,4 @@ a.extend({
 )
 let b = solve()
 
-console.log(Object.getPrototypeOf(b))
+console.log(Object.getPrototypeOf(a))
