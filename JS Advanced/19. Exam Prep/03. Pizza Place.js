@@ -58,6 +58,14 @@ describe('Pizza Place', () => {
     })
     it('getRemainingWork', () => {
         let test = [{ pizzaName: 'Verona', status: 'ready' }, { pizzaName: 'Formaggi', status: 'preparing' }]
+        let test2 = [{ pizzaName: 'Verona', status: 'ready' }, { pizzaName: 'Fab', status: 'preparing' },{ pizzaName: 'Verona', status: 'ready' }, { pizzaName: 'FFa', status: 'preparing' }]
+        let test3 = [{ pizzaName: 'Verona', status: 'ready' }, { pizzaName: 'Fab', status: 'ready' },{ pizzaName: 'Verona', status: 'ready' }, { pizzaName: 'FFa', status: 'ready' }]
+
+
+        assert.equal(pizzUni.getRemainingWork(test), `The following pizzas are still preparing: Formaggi.`)
+        assert.equal(pizzUni.getRemainingWork(test2), `The following pizzas are still preparing: Fab, FFa.`)
+        assert.equal(pizzUni.getRemainingWork(test3), `All orders are complete!`)
+
 
     })
 })
