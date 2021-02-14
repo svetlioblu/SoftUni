@@ -9,6 +9,8 @@
 //     console.log(result);
 
 
-let result = 'the quick brown fox jumps over the lazy dog'
-console.log(result.substr(0,10).trim());
+let result = 'ssc - 2021/02/04 - 18:34'
+console.log(result.substring(result.indexOf(' ')+3).replace(/\//g, '-').replace(/ - /g, 'T'));
+
+//console.log(match.replace(/\//g, '-').replace(/ - /g, 'T'));
 
