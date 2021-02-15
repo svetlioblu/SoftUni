@@ -9,8 +9,10 @@
 //     console.log(result);
 
 
-let result = 'ssc - 2021/02/04 - 18:34'
-console.log(result.substring(result.indexOf(' ')+3).replace(/\//g, '-').replace(/ - /g, 'T'));
+
+let result = 1.2
+result -= result * 0.1
+console.log(result)
 
 //console.log(match.replace(/\//g, '-').replace(/ - /g, 'T'));
 
