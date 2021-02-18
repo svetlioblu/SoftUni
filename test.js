@@ -10,9 +10,9 @@
 
 
 
-let result = 1.2
-result -= result * 0.1
-console.log(result)
+let result = ['salt', 'bla', 'Bread']
+
+console.log(result.some(x => x === 'Bread'))
 
 //console.log(match.replace(/\//g, '-').replace(/ - /g, 'T'));
 
