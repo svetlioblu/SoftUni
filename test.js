@@ -10,9 +10,9 @@
 
 
 
-let result = ['salt', 'bla', 'Bread']
+let result = [{}, {}, {}]
 
-console.log(result.some(x => x === 'Bread'))
+console.log(result.some(x=>x=='Bread'))
 
 //console.log(match.replace(/\//g, '-').replace(/ - /g, 'T'));
 
