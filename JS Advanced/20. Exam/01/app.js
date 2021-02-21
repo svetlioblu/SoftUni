@@ -62,10 +62,13 @@ function solve() {
       }
       if (e.target.className == 'btn archive') {
          let li = document.createElement('li')
-         li.textContent = title.value
+         li.textContent = e.target.parentNode.parentNode.querySelector('h1').textContent
          archived.appendChild(li)
          e.target.parentNode.parentNode.remove()
+         Array.from(archived.querySelectorAll('li')).sort((a, b) => {
+            return a.textContent.localeCompare(b.textContent)
+         }).forEach(e => archived.appendChild(e))
       }
    })
-  // console.log(Array.from(document.querySelectorAll('.archive-section ol li')))
+
 }
