@@ -9,10 +9,17 @@
 //     console.log(result);
 
 
-
-let result = [{}, {}, {}]
-
-console.log(result.some(x=>x=='Bread'))
-
-//console.log(match.replace(/\//g, '-').replace(/ - /g, 'T'));
-
+function e(type, attribute, text) {
+    let element = document.createElement(type)
+    if (attribute != {} && attribute != undefined) {
+        Object.entries(attribute).forEach(([name, value]) => {
+            element.setAttribute(`${name}`, `${value}`)
+        })
+        if (text) {
+            element.textContent = text
+        }
+    }
+    return element
+}
+//console.log(e('li', { class: 'name' }))
+document.querySelector('div').appendChild(e('div', { class: 'name' },'my text'))
