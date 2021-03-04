@@ -4,16 +4,19 @@
 
 }())
 async function getBooks() {
-
+    const table = document.getElementsByTagName('tbody')[0]
     const url = 'http://localhost:3030/jsonstore/collections/books'
     const response = await fetch(url)
     if (response.ok) {
         const data = await response.json()
-
-
+        table.innerHTML = ''
+        Object.values(data).forEach(el => {
+            const addBook = e('tr', {}, '', e('td', {}, `${el.title}`), e('td', {}, `${el.author}`), e('td', {}, ``, e('button', { class: 'edit' }, `Edit`), e('button', { class: 'delete' }, `Delete`)))
+            table.appendChild(addBook)
+        })
+        table.addEventListener('click', dispatcher)
     } else { alert(response.statusText) }
 
-    console.log(data)
 }
 async function postBook(ev) {
     ev.preventDefault()
@@ -38,6 +41,17 @@ async function postBook(ev) {
     }
 
 }
+async function deleteBook() {
+
+}
+function dispatcher(ev) {
+    if (ev.target.className == 'edit') {
+
+    } else if (ev.target.className == 'dlete') {
+
+    }
+}
+
 function e(type, attribute, text, ...params) {
     let element = document.createElement(type)
     if (attribute != {} && attribute != undefined) {
@@ -55,12 +69,3 @@ function e(type, attribute, text, ...params) {
     }
     return element
 }
-
-/* <tr>
-                <td>Game of Thrones</td>
-                <td>George R. R. Martin</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr> */
