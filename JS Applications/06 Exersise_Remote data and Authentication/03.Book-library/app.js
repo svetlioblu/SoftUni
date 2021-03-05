@@ -30,7 +30,7 @@ async function postBook(ev) {
             throw new Error('Invalid Input!')
         }
 
-        const url =  'http://localhost:3030/jsonstore/collections/books'
+        const url = 'http://localhost:3030/jsonstore/collections/books'
         const method = 'POST'
         const options = {
             method,
@@ -43,11 +43,16 @@ async function postBook(ev) {
         if (!response.ok) {
             alert(response.statusText)
         }
+    } else {
+        const params = await editBook()
+        console.log(params);
     }
 }
 async function editBook(ev, id) {
+   
     document.getElementsByTagName('h3')[0].textContent = 'Edit FORM'
     document.querySelector('form button').textContent = 'Save'
+    return id
 }
 async function deleteBook(ev, id) {
     const url = 'http://localhost:3030/jsonstore/collections/books/' + id
