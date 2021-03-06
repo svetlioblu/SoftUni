@@ -16,9 +16,29 @@ async function getStudents() {
 }
 
 async function onSubmit(ev) {
-ev.preventDefault()
-const formdata = new FormData(ev.target)
-console.log(formdata);
+    ev.preventDefault()
+    let isValidInput = false
+    const formdata = new FormData(ev.target)
+    const inputValues = formdata.getAll('data')
+    inputValues.filter(x => x != '').length >= 5 && !isNaN(inputValues[0]) ? isValidInput = true : alert('All fields are required');
+    if (isValidInput) {
+        console.log('0k');
+        let data = {
+            ID: inputValues[0],
+            firstName: inputValues[1],
+            lastName: inputValues[2],
+            facultyNumber: inputValues[3],
+            grade: inputValues[4]
+        }
+        const url = 'http://localhost:3030/jsonstore/collections/students'
+        const options = {
+            method: 'POST',
+            'Content-Type': 'application/json',
+            body: JSON.stringify(data)
+        }
+        await fetch(url, options)
+        document.querySelector('tbody').innerHTML = ''
+        getStudents()
+    }
 
-console.log(ID);
 }
