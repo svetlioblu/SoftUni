@@ -33,7 +33,7 @@ async function onSubmit(ev) {
         const url = 'http://localhost:3030/jsonstore/collections/students'
         const options = {
             method: 'POST',
-            'Content-Type': 'application/json',
+            headers:{'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         }
         await fetch(url, options)
