@@ -1,6 +1,6 @@
+const token = sessionStorage.getItem('userToken')
 async function attachEvents() {
-    const token = sessionStorage.getItem('userToken')
-    document.querySelector('button.load').addEventListener('click', (ev) => getCatches(token))
+    document.querySelector('button.load').addEventListener('click', getCatches)
     if (token) {
         document.querySelector('button.add').disabled = false
         document.querySelector('#addForm').addEventListener('submit', (ev) => postCatches(ev, token))
@@ -11,6 +11,7 @@ async function attachEvents() {
 attachEvents()
 
 async function getCatches() {
+
     const url = 'http://localhost:3030/data/catches'
     const response = await fetch(url)
     if (response.ok == false) {
@@ -23,9 +24,14 @@ async function getCatches() {
     <legend>Catches</legend>
     ${result.join('\n')}
     `
-    document.querySelectorAll('button').forEach(btn => btn.disabled = false)
+    if (token) {
+        document.querySelectorAll('button').forEach(btn => btn.disabled = false)
+        document.querySelector('#main').addEventListener('click', modifyCatches)
+    } else {
+        document.querySelectorAll('button').forEach(btn => btn.disabled = true)
+    }
 }
-async function postCatches(ev, token) {
+async function postCatches(ev) {
     ev.preventDefault()
     const formData = new FormData(ev.target)
     const validation = [...formData.values(ev.target)].some(x => x == '')
@@ -51,12 +57,28 @@ async function postCatches(ev, token) {
         let error = await response.json()
         return alert(error.message)
     }
-    const data = await response.json()
+    getCatches()
+}
+function modifyCatches(ev) {
+    if (ev.target.className == 'update') {
 
+    } else if (ev.target.className == 'delete') {
+        const el = ev.target.parentNode
+        deleteCatches(el, el.id)
+    }
+}
+async function deleteCatches(el, id) {
+    const url = `http://localhost:3030/data/catches/` + id
+    const response = await fetch(url, { method: 'DELETE', headers: { 'X-Authorization': token }})
+    if (!response.ok) {
+        return alert(response.statusText)
+    }
+    el.remove()
 }
 
+
 function createElements(element) {
-    element = `<div class="catch">
+    element = `<div class="catch" id="${element._id}">
  <label>Angler</label>
  <input type="text" class="angler" value="${element.angler}" />
  <hr>
