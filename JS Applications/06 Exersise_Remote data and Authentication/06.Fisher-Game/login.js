@@ -1,13 +1,8 @@
+document.getElementById('logIn').addEventListener('submit', onSubmit)
 
-(function () {
-
-    document.getElementById('register').addEventListener('submit', postRegister)
-
-}())
-
-async function postRegister(ev) {
+async function onSubmit(ev) {
     ev.preventDefault()
-    const url = `http://localhost:3030/users/register`
+    const url = `http://localhost:3030/users/login`
     const formData = new FormData(ev.target)
     const validation = [...formData.values(ev.target)].some(x => x == '')
     if (validation) {
@@ -16,10 +11,7 @@ async function postRegister(ev) {
     }
     const email = formData.get('email')
     const password = formData.get('password')
-    const rePass = formData.get('rePass')
-    if (password != rePass) {
-        return alert('The passwords do not Match')
-    }
+    
     const options = {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
