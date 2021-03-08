@@ -1,5 +1,6 @@
 const token = sessionStorage.getItem('userToken')
 async function attachEvents() {
+   
     document.querySelector('button.load').addEventListener('click', getCatches)
     if (token) {
         document.querySelector('button.add').disabled = false
@@ -61,7 +62,8 @@ async function postCatches(ev) {
 }
 function modifyCatches(ev) {
     if (ev.target.className == 'update') {
-
+        const el = ev.target.parentNode
+        updateCatches(el, el.id)
     } else if (ev.target.className == 'delete') {
         const el = ev.target.parentNode
         deleteCatches(el, el.id)
@@ -69,14 +71,36 @@ function modifyCatches(ev) {
 }
 async function deleteCatches(el, id) {
     const url = `http://localhost:3030/data/catches/` + id
-    const response = await fetch(url, { method: 'DELETE', headers: { 'X-Authorization': token }})
+    const response = await fetch(url, { method: 'DELETE', headers: { 'X-Authorization': token } })
     if (!response.ok) {
         return alert(response.statusText)
     }
     el.remove()
 }
+async function updateCatches(el, id) {
 
+    const allFields = [...el.querySelectorAll('input')].reduce((acc, curr) => {
+        acc[curr.className] = curr.value
+        return acc
+    }, {})
+    const url = `http://localhost:3030/data/catches/` + id
+    console.log(allFields);
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(allFields)
+    }
+    const response = await fetch(url, options)
+    if (response.ok == false) {
+        let error = await response.json()
+        return alert(error.message)
+    }
+    //getCatches()
 
+}
 function createElements(element) {
     element = `<div class="catch" id="${element._id}">
  <label>Angler</label>
