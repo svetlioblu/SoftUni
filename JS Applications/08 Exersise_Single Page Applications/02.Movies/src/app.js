@@ -1,3 +1,6 @@
-import {setUpHome} from './homePage'
+import { setUpHome, showHome } from './homePage.js'
 const main = document.getElementById('main')
-setUpHome(main,)
+const homepage = document.getElementById('home-page')
+
+setUpHome(main, homepage)
+showHome()
