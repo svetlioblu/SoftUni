@@ -1,4 +1,6 @@
 import { showHome } from './homePage.js'
+import { showLogIn } from './login.js'
+import { logOut } from './logOut.js'
 import { showRegister } from './register.js'
 
 
@@ -6,8 +8,8 @@ export function navClick(ev) {
     ev.preventDefault()
     const link = {
         'movies': showHome,
-        // logout
-        // login
+        'logout': logOut,
+        'login': showLogIn,
         'register': showRegister
     }
     //logic to display logged or not logged user
