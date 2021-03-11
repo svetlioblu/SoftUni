@@ -2,7 +2,9 @@ import { showHome } from './homePage.js'
 import { showLogIn } from './login.js'
 import { logOut } from './logOut.js'
 import { showRegister } from './register.js'
-
+const token = sessionStorage.getItem('AuthToken')
+const email = sessionStorage.getItem('Email')
+const id = sessionStorage.getItem('id')
 
 export function navClick(ev) {
     ev.preventDefault()

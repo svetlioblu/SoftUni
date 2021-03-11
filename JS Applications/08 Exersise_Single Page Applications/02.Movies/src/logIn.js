@@ -12,6 +12,15 @@ export function setLogIn(maintTarget, sectionTarget) {
 export function showLogIn() {
     main.innerHTML = ''
     main.appendChild(section)
+    let email = sessionStorage.getItem('Email')
+    if (email) {
+        Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'none')
+        Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'block')
+        document.getElementById('home').textContent = `Welcome, ${email}`
+    } else {
+        Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'none')
+        Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'block')
+    }
 }
 
 async function signIn(email, password) {
@@ -27,6 +36,10 @@ async function signIn(email, password) {
         sessionStorage.setItem('AuthToken', data.accessToken)
         sessionStorage.setItem('Email', data.email)
         sessionStorage.setItem('Id', data._id)
+        Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'none')
+        document.getElementById('home').textContent = `Welcome, ${sessionStorage.getItem('Email')}`
+
+
         showHome()
     } else {
         const error = await response.json()

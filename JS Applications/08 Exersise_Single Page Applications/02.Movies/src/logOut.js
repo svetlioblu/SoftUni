@@ -14,6 +14,9 @@ export async function logOut() {
             const error = await response.json()
             return alert(error.message)
         } else {
+
+            Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'none')
+            Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'block')
             sessionStorage.clear()
             showLogIn()
         }
