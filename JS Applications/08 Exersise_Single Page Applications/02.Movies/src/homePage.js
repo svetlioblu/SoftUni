@@ -20,13 +20,19 @@ export async function showHome() {
     container.innerHTML = ''
     container.appendChild(fragment)
     let email = sessionStorage.getItem('Email')
+    const addMovieBtn = document.getElementById('add-movie-button')
     if (email) {
         Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'none')
         Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'block')
         document.getElementById('home').textContent = `Welcome, ${email}`
+        addMovieBtn.style.display = 'block'
+        addMovieBtn.addEventListener('click', addMovie)
     } else {
         Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'none')
         Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'block')
+        addMovieBtn.removeEventListener('click', addMovie)
+        addMovieBtn.style.display = 'none'
+
     }
 }
 
@@ -62,4 +68,8 @@ function createCards(movies) {
         return card
     }
     return cards
+}
+
+function addMovie(ev) {
+    console.log('ok');
 }
