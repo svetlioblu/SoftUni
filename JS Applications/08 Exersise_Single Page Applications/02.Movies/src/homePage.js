@@ -7,10 +7,10 @@ export async function setUpHome(mainTarget, sectionTarget) {
     main = mainTarget;
     section = sectionTarget;
     container = section.querySelector('.card-deck.d-flex.justify-content-center')
-
 }
 
 export async function showHome() {
+    container.innerHTML = 'Loading...'
     main.innerHTML = ''
     main.appendChild(section)
     let movies = await getCards()
