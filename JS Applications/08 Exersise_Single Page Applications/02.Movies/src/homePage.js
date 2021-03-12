@@ -1,3 +1,5 @@
+import { showMoviePage } from "./addMovie.js";
+
 let main;
 let section;
 let container;
@@ -61,7 +63,7 @@ function createCards(movies) {
         </div>
         <div class="card-footer">
             
-        <button id ="${card._id} "type="button" class="btn btn-info">Details</button>
+        <button data-cardId ="${card._id}" data-ownerId ="${card._ownerId}"type="button" class="btn btn-info">Details</button>
             
         `
         card = element
@@ -71,5 +73,5 @@ function createCards(movies) {
 }
 
 function addMovie(ev) {
-    console.log('ok');
+    showMoviePage()
 }
