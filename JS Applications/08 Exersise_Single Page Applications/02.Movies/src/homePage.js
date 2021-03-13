@@ -1,4 +1,5 @@
 import { showMoviePage } from "./addMovie.js";
+import { setDetails } from "./details.js";
 
 let main;
 let section;
@@ -34,8 +35,8 @@ export async function showHome() {
         Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'block')
         addMovieBtn.removeEventListener('click', addMovie)
         addMovieBtn.style.display = 'none'
-
     }
+    setDetails(main, container)
 }
 
 async function getCards() {
