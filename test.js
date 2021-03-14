@@ -28,9 +28,4 @@ let reg = /\((.+?)\)/g
 }*/
 
 //--------------
-let main;
-function name(A) {
-    main=A
-}
-name(5)
-console.log(main)
+//import { html, render } from 'https://unpkg.com/lit-html?module'

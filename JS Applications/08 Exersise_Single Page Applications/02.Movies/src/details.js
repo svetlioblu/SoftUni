@@ -47,11 +47,13 @@ async function createDetailsPage(id) {
             ownerBtns = `<a class="btn btn-danger" href="javascript:void(0)">Delete</a>
             <a class="btn btn-warning" href="javascript:void(0)">Edit</a>`
         } else {
-            console.log(owner);
-            console.log(await checkIfAlreadyLiked() );
-            ownerBtns = `<a class="btn btn-primary" href="javascript:void(0)">Like</a>`
+            if (await checkIfAlreadyLiked()) {
+                ownerBtns = `<span id="liked" class="enrolled-span">Liked ${await likeCount()}</span>`
+            } else {
+                ownerBtns = `<a class="btn btn-primary" href="javascript:void(0)">Like</a>`
+            }
         }
-        
+
         element.innerHTML = `
         <div class="container">
             <div class="row bg-light text-dark">
@@ -91,7 +93,7 @@ async function onConstrolClick(ev) {
                 'Content-Type': 'application/json',
                 'X-Authorization': sessionStorage.getItem('AuthToken')
             },
-            body: JSON.stringify({ movieId: id })
+            body: JSON.stringify({ movieId: id, email: sessionStorage.getItem('Email') })
         }
         const response = await fetch(url, options)
         if (!response.ok) {
@@ -101,19 +103,17 @@ async function onConstrolClick(ev) {
         const likeCountElement = ev.target.parentNode.querySelector('#liked')
         likeCountElement.textContent = `Liked ${await likeCount()}`
         likeCountElement.style.display = 'block'
-        async function likeCount(){
-            let movieLikesUrl = `http://localhost:3030/data/likes`
-            const responce = await fetch(movieLikesUrl)
-            const data = await responce.json()
-            return Array.from(data).filter(x => x.movieId == id).length
-        }
-
     }
 }
-
-async function checkIfAlreadyLiked () {
+async function likeCount() {
     let movieLikesUrl = `http://localhost:3030/data/likes`
-            const responce = await fetch(movieLikesUrl)
-            const data = await responce.json()
-            return Array.from(data).some(x => x._ownerId == owner)
+    const responce = await fetch(movieLikesUrl)
+    const data = await responce.json()
+    return Array.from(data).filter(x => x.movieId == id).length
+}
+async function checkIfAlreadyLiked() {
+    let movieLikesUrl = `http://localhost:3030/data/likes`
+    const responce = await fetch(movieLikesUrl)
+    const data = await responce.json()
+    return Array.from(data).some(x => (x.email == sessionStorage.getItem('Email') && x.movieId == id))
 }

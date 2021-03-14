@@ -27,6 +27,15 @@ export function setRegister(mainTarget, sectionTarget) {
 export function showRegister() {
     main.innerHTML = ''
     main.appendChild(section)
+    let email = sessionStorage.getItem('Email')
+    if (email) {
+        Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'none')
+        Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'block')
+        document.getElementById('home').textContent = `Welcome, ${email}`
+    } else {
+        Array.from(document.getElementsByClassName('logged')).forEach(e => e.style.display = 'none')
+        Array.from(document.getElementsByClassName('guest')).forEach(e => e.style.display = 'block')
+    }
 }
 
 async function assign(email, password) {
