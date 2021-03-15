@@ -11,7 +11,6 @@ loadBtn.addEventListener('click', onLoad)
 function onLoad(ev) {
     ev.preventDefault()
     let data = input.value.split(', ').map(x => x.trim())
-console.log(data);
     let result = templateSection(data)
     render(result, target)
 }
