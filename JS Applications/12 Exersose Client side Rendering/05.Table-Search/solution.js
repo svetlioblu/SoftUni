@@ -6,7 +6,7 @@ const searchField = document.querySelector('#searchField')
 
 let template = (data) => html`
 ${data.map(x => {
-   return html` <tr>
+return html` <tr>
    <td>${x.firstName} ${x.lastName}</td>
    <td>${x.email}</td>
    <td>${x.course}</td>
@@ -17,16 +17,18 @@ searchBtn.addEventListener('click', () => {
    if (searchField.value == '') {
       return alert('The field is empty!')
    }
-   Array.from(document.querySelectorAll('tbody tr')).forEach(x => {
-      x.removeAttribute('class')
+   Array.from(document.querySelectorAll('tbody tr')).map(x => {
       if (x.textContent.toLowerCase().includes(searchField.value.toLowerCase())) {
          x.setAttribute('class', 'select')
-         console.log(x);
-         searchField.value = ''
-      } 
+         return x
+      } else {
+         x.removeAttribute('class')
+         return x
+      }
+      searchField.value = ''
    })
-})
 
+})
 async function update() {
    let getRows = await getContent()
    render(template(getRows), tbody)
