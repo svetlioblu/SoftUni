@@ -1,9 +1,9 @@
 import { html, render } from 'https://unpkg.com/lit-html?module'
-import { del, getAll, postCreate } from './api.js'
+import { del, getAll, getOne, postCreate, putUpdate } from './api.js'
 const body = document.querySelector('body')
 let isEdit = false
-
-let pageTemplate = (isEdit) => html`<button id="loadBooks" @click=${onLoadBooks}>LOAD ALL BOOKS</button>
+//TEMPLATES.....
+let pageTemplate = (isEdit, id, author, title) => html`<button id="loadBooks" @click=${onLoadBooks}>LOAD ALL BOOKS</button>
 <table>
     <thead>
         <tr>
@@ -16,11 +16,11 @@ let pageTemplate = (isEdit) => html`<button id="loadBooks" @click=${onLoadBooks}
 
     </tbody>
 </table>
-${isEdit ? editFormTemplate() : addFormTemplate()}
+${isEdit ? editFormTemplate(id, author, title) : addFormTemplate()}
 `
 
 let rowsTemplate = (data) => html`${data.map(row => {
-    return html`<tr>
+return html`<tr>
     <td>${row[1].author}</td>
     <td>${row[1].title}</td>
     <td>
@@ -28,13 +28,13 @@ let rowsTemplate = (data) => html`${data.map(row => {
         <button class="delete" data-id="${row[0]}">Delete</button>
     </td>
 </tr>`})}`
-let editFormTemplate = () => html`<form id="edit-form">
+let editFormTemplate = (id, author, title) => html`<form id="edit-form" @submit=${(ev)=> onBookEdit(ev, id)}>
     <input type="hidden" name="id">
     <h3>Edit book</h3>
     <label>TITLE</label>
-    <input type="text" name="title" placeholder="Title...">
+    <input type="text" name="title" .value="${author}">
     <label>AUTHOR</label>
-    <input type="text" name="author" placeholder="Author...">
+    <input type="text" name="author" .value="${title}">
     <input type="submit" value="Save">
 </form>`
 let addFormTemplate = () => html`<form id="add-form" @submit=${onBookCreate}>
@@ -45,7 +45,7 @@ let addFormTemplate = () => html`<form id="add-form" @submit=${onBookCreate}>
     <input type="text" name="author" placeholder="Author...">
     <input type="submit" value="Submit">
 </form>`
-
+//LOGIC....
 export function start() {
     render(pageTemplate(isEdit), body)
 }
@@ -60,6 +60,20 @@ function onBookCreate(ev) {
     postCreate('http://localhost:3030/jsonstore/collections/books', { author, title })
     ev.target.reset()
 }
+async function onBookEdit(ev, id) {
+    ev.preventDefault()
+    const formData = new FormData(ev.target)
+    let title = formData.get('title')
+    let author = formData.get('author')
+
+    if (title == '' || author == '') {
+        return alert('The fields cannot be Empty!')
+    }
+
+    putUpdate('http://localhost:3030/jsonstore/collections/books/' + id, { author, title })
+    // postCreate('http://localhost:3030/jsonstore/collections/books', { author, title })
+    // ev.target.reset()
+}
 
 async function onLoadBooks() {
     const target = document.querySelector('tbody')
@@ -71,13 +85,17 @@ async function onLoadBooks() {
     }
 }
 
-function onRowAction(ev) {
+async function onRowAction(ev) {
     if (ev.target.className == 'delete') {
         del('http://localhost:3030/jsonstore/collections/books/' + ev.target.dataset.id)
-        render(pageTemplate(isEdit), body)
+        //start()
+        //onLoadBooks()
     } else if (ev.target.className == 'edit') {
         isEdit = true
-        render(pageTemplate(isEdit), body)
+        let id = ev.target.dataset.id
+        let { author, title } = await getOne('http://localhost:3030/jsonstore/collections/books/' + id)
+        render(pageTemplate(isEdit, id, author, title), body)
+
     }
 }
 
