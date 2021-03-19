@@ -1,3 +1,4 @@
+const host = 'http://localhost:3030'
 async function request(url, options) {
     try {
         const response = await fetch(url, options)
@@ -6,8 +7,12 @@ async function request(url, options) {
             alert(error.message)
             throw new Error(error.message)
         }
-        const data = await response.json()
-        return data
+        try {
+            const data = await response.json()
+            return data
+        } catch (err) {
+            return response
+        }
     } catch (error) {
         alert(error.message)
         throw error
@@ -42,7 +47,10 @@ async function putUpdate(urlId, data) {
     return await request(urlId, getOptions('PUT', data))
 }
 async function del(urlId) {
-    return await request(urlId,getOptions('DELETE'))
+    return await request(urlId, getOptions('DELETE'))
+}
+async function logIn(email, password) {
+    return await postCreate(host + '/users/login', { email, password })
 }
 
 export {
