@@ -9,6 +9,9 @@ async function request(url, options) {
         }
         try {
             const data = await response.json()
+            if (data.accessToken) {
+                sessionStorage.setItem('authToken', data.accessToken)
+            }
             return data
         } catch (err) {
             return response
@@ -58,5 +61,6 @@ export {
     getOne,
     postCreate,
     putUpdate,
-    del
+    del,
+    logIn
 }
