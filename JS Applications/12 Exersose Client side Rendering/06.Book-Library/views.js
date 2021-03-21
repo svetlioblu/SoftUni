@@ -2,6 +2,7 @@ import { html, render } from 'https://unpkg.com/lit-html?module'
 import { del, getAll, getOne, postCreate, putUpdate } from './api.js'
 const body = document.querySelector('body')
 let isEdit = false
+
 //TEMPLATES.....
 let pageTemplate = (isEdit, id, author, title) => html`<button id="loadBooks" @click=${onLoadBooks}>LOAD ALL BOOKS</button>
 <table>
@@ -13,14 +14,14 @@ let pageTemplate = (isEdit, id, author, title) => html`<button id="loadBooks" @c
         </tr>
     </thead>
     <tbody>
-
+        
     </tbody>
 </table>
 ${isEdit ? editFormTemplate(id, author, title) : addFormTemplate()}
 `
 
 let rowsTemplate = (data) => html`${data.map(row => {
-return html`<tr>
+    return html`<tr>
     <td>${row[1].author}</td>
     <td>${row[1].title}</td>
     <td>
@@ -28,7 +29,7 @@ return html`<tr>
         <button class="delete" data-id="${row[0]}">Delete</button>
     </td>
 </tr>`})}`
-let editFormTemplate = (id, author, title) => html`<form id="edit-form" @submit=${(ev)=> onBookEdit(ev, id)}>
+let editFormTemplate = (id, author, title) => html`<form id="edit-form" @submit=${(ev) => onBookEdit(ev, id)}>
     <input type="hidden" name="id">
     <h3>Edit book</h3>
     <label>TITLE</label>
@@ -69,13 +70,14 @@ async function onBookEdit(ev, id) {
     if (title == '' || author == '') {
         return alert('The fields cannot be Empty!')
     }
-
     putUpdate('http://localhost:3030/jsonstore/collections/books/' + id, { author, title })
-    // postCreate('http://localhost:3030/jsonstore/collections/books', { author, title })
-    // ev.target.reset()
+    isEdit = false
+    render(pageTemplate(isEdit), body)
 }
 
+
 async function onLoadBooks() {
+
     const target = document.querySelector('tbody')
     let data = await getAll('http://localhost:3030/jsonstore/collections/books')
     render(rowsTemplate(Object.entries(data)), target)
@@ -95,7 +97,6 @@ async function onRowAction(ev) {
         let id = ev.target.dataset.id
         let { author, title } = await getOne('http://localhost:3030/jsonstore/collections/books/' + id)
         render(pageTemplate(isEdit, id, author, title), body)
-
     }
 }
 
