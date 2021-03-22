@@ -20,4 +20,4 @@ import {html, render} from 'https://unpkg.com/lit-html?module'
 import{html,render} from './node_modules/lit-html/lit-html.js'
 
 import page from "//unpkg.com/page/page.mjs"
-import{page} from './node_modules/page/page.js'
+import page from './node_modules/page/page.mjs'
