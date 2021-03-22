@@ -1,16 +1,14 @@
 import page from "//unpkg.com/page/page.mjs"
 import { render } from 'https://unpkg.com/lit-html?module'
-import * as api from '../data/api.js'
 import { dashboardPage } from "./dashboard.js"
 import { loginPage } from "./login.js"
-window.api = api
+
 const target = document.querySelector('.container')
 page('/', renderMiddleWare, dashboardPage)
 page('/dashboard', renderMiddleWare, dashboardPage)
 page('/login', renderMiddleWare, loginPage)
 
 
-page.redirect('/')
 page.start()
 nav()
 function renderMiddleWare(ctx, next) {
@@ -18,7 +16,7 @@ function renderMiddleWare(ctx, next) {
     next()
 }
 
-function nav() {
+export function nav() {
     const loggedUser = document.getElementById('user')
     const guestUser = document.getElementById('guest')
     const token = sessionStorage.getItem('authToken')

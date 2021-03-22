@@ -1,6 +1,6 @@
 import { html } from 'https://unpkg.com/lit-html?module'
 import { getAll } from '../data/api.js'
-
+import { nav } from './app.js'
 let dashboardTemplate = (data) => html`
 <div class="row space-top">
     <div class="col-md-12">
@@ -29,5 +29,6 @@ let itemTemplate = (item) => html`
 export async function dashboardPage(ctx) {
     console.log('dashboardpage');
     let data = await getAll(`http://localhost:3030/data/catalog`)
+    nav()
     ctx.render(dashboardTemplate(data))
 }

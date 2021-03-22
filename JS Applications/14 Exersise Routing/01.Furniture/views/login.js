@@ -1,12 +1,14 @@
-import { html, render } from 'https://unpkg.com/lit-html?module'
-let loginPageTemplate = () => html`
+import { html } from 'https://unpkg.com/lit-html?module'
+import { logIn } from '../data/api.js';
+
+let loginPageTemplate = (ctx) => html`
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Login User</h1>
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form>
+<form @submit=${(ev) => onSubmit(ev, ctx)}>
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
@@ -22,7 +24,17 @@ let loginPageTemplate = () => html`
     </div>
 </form>`
 export async function loginPage(ctx) {
-    console.log('log in page');
-    //let data = await getAll(`http://localhost:3030/data/catalog`)
-    ctx.render(loginPageTemplate())
+    ctx.render(loginPageTemplate(ctx))
+}
+function onSubmit(ev, ctx) {
+    ev.preventDefault()
+    const formData = new FormData(ev.target)
+    let email = formData.get('email')
+    let password = formData.get('password')
+    if (email == '' || password == '') {
+        return alert('The fileds are empty')
+    }
+    logIn(email, password)
+    ev.target.reset()
+    ctx.page.redirect('/')
 }
