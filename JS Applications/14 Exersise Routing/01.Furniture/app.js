@@ -3,12 +3,19 @@ import { render } from 'https://unpkg.com/lit-html?module'
 import { dashboardPage } from "./views/dashboard.js"
 import { loginPage } from "./views/login.js"
 import { registerPage } from "./views/register.js"
+import { logOut } from "./data/api.js"
+import { createPage } from "./views/create.js"
+import { myPublicationPage } from "./views/myPublications.js"
 
 const target = document.querySelector('.container')
 page('/', renderMiddleWare, dashboardPage)
 page('/dashboard', renderMiddleWare, dashboardPage)
 page('/login', renderMiddleWare, loginPage)
 page('/register', renderMiddleWare, registerPage)
+page('/create', renderMiddleWare, createPage)
+page('/myPublications', renderMiddleWare, myPublicationPage)
+
+
 
 //page('/details/:id', renderMiddleWare, detailsPage)
 
@@ -34,3 +41,10 @@ export function nav() {
         loggedUser.style.display = 'none'
     }
 }
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    let confirmation = confirm('Are you sure?')
+    if (confirmation) {
+        logOut()
+        page.redirect('/')
+    }
+})

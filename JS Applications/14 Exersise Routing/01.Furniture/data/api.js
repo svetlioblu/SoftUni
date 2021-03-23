@@ -63,8 +63,8 @@ async function register(email, password) {
     sessionStorage.setItem('userId', result._id)
     return result
 }
-async function logOut(email, password) {
-    const result = await postCreate(host + '/users/logout', { email, password })
+async function logOut() {
+    const result = await postCreate(host + '/users/logout')
     sessionStorage.removeItem('email', result.email)
     sessionStorage.removeItem('authToken', result.accessToken)
     sessionStorage.removeItem('userId', result._id)
@@ -78,5 +78,6 @@ export {
     putUpdate,
     del,
     logIn,
-    register
+    register,
+    logOut
 }
