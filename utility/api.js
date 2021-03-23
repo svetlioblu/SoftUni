@@ -9,9 +9,6 @@ async function request(url, options) {
         }
         try {
             const data = await response.json()
-            if (data.accessToken) {
-                sessionStorage.setItem('authToken', data.accessToken)
-            }
             return data
         } catch (err) {
             return response
@@ -53,7 +50,25 @@ async function del(urlId) {
     return await request(urlId, getOptions('DELETE'))
 }
 async function logIn(email, password) {
-    return await postCreate(host + '/users/login', { email, password })
+    const result = await postCreate(host + '/users/login', { email, password })
+    sessionStorage.setItem('email', result.email)
+    sessionStorage.setItem('authToken', result.accessToken)
+    sessionStorage.setItem('userId', result._id)
+    return result
+}
+async function register(email, password) {
+    const result = await postCreate(host + '/users/register', { email, password })
+    sessionStorage.setItem('email', result.email)
+    sessionStorage.setItem('authToken', result.accessToken)
+    sessionStorage.setItem('userId', result._id)
+    return result
+}
+async function logOut() {
+    const result = await postCreate(host + '/users/logout')
+    sessionStorage.removeItem('email', result.email)
+    sessionStorage.removeItem('authToken', result.accessToken)
+    sessionStorage.removeItem('userId', result._id)
+    return result
 }
 
 export {
@@ -62,5 +77,7 @@ export {
     postCreate,
     putUpdate,
     del,
-    logIn
+    logIn,
+    register,
+    logOut
 }
