@@ -14,7 +14,7 @@ let itemTemplate = (item) => html`
 <div class="col-md-4">
     <div class="card text-white bg-primary">
         <div class="card-body">
-            <img src='${item.img}'/>
+            <img src='${item.img}' />
             <p>${item.description}</p>
             <footer>
                 <p>Price: <span>${item.price} $</span></p>
@@ -27,8 +27,7 @@ let itemTemplate = (item) => html`
 </div>`
 
 export async function dashboardPage(ctx) {
-    console.log('dashboardpage');
     let data = await getAll(`http://localhost:3030/data/catalog`)
-   nav()
+    nav()
     ctx.render(dashboardTemplate(data))
 }

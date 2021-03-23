@@ -2,11 +2,14 @@ import page from "//unpkg.com/page/page.mjs"
 import { render } from 'https://unpkg.com/lit-html?module'
 import { dashboardPage } from "./views/dashboard.js"
 import { loginPage } from "./views/login.js"
+import { registerPage } from "./views/register.js"
 
 const target = document.querySelector('.container')
 page('/', renderMiddleWare, dashboardPage)
 page('/dashboard', renderMiddleWare, dashboardPage)
 page('/login', renderMiddleWare, loginPage)
+page('/register', renderMiddleWare, registerPage)
+
 //page('/details/:id', renderMiddleWare, detailsPage)
 
 
@@ -15,6 +18,7 @@ nav()
 page.start()
 function renderMiddleWare(ctx, next) {
     ctx.render = (content) => render(content, target)
+    ctx.updateNav = nav
     next()
 }
 
