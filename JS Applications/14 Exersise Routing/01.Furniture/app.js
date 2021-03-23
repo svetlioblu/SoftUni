@@ -6,6 +6,8 @@ import { registerPage } from "./views/register.js"
 import { logOut } from "./data/api.js"
 import { createPage } from "./views/create.js"
 import { myPublicationPage } from "./views/myPublications.js"
+import { detailsPage } from "./views/details.js"
+import { editPage } from "./views/edit.js"
 
 const target = document.querySelector('.container')
 page('/', renderMiddleWare, dashboardPage)
@@ -14,12 +16,8 @@ page('/login', renderMiddleWare, loginPage)
 page('/register', renderMiddleWare, registerPage)
 page('/create', renderMiddleWare, createPage)
 page('/myPublications', renderMiddleWare, myPublicationPage)
-
-
-
-//page('/details/:id', renderMiddleWare, detailsPage)
-
-
+page('/details/:id', renderMiddleWare, detailsPage)
+page('/edit/:id', renderMiddleWare, editPage)
 
 nav()
 page.start()
