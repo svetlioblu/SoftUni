@@ -3,7 +3,8 @@ import page from '../node_modules/page/page.mjs'
 import { browseTeamPage } from './views/browseTeam.js'
 import { homePage } from './views/home.js'
 import { logInPage } from './views/login.js'
-
+import * as api from '../src/data/api.js'
+window.api = api
 const target = document.querySelector('main')
 navigation()
 page('/', contextDecoration, homePage)

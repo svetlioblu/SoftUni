@@ -39,3 +39,5 @@ async function populateTemplate(token) {
     let data = await getAll('http://localhost:3030/data/teams')
     return browseTeamTemplate(data, token)
 }
+
+// to do members count

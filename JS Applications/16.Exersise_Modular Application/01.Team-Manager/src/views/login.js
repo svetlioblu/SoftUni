@@ -1,4 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
+import { logIn } from '../data/api.js';
 import { loadTemplate } from './common/loadTemplate.js';
 
 let logInPageTemplate = (onSubmit, errorMsg) => html`
@@ -18,9 +19,6 @@ let logInPageTemplate = (onSubmit, errorMsg) => html`
     </article>
 </section>`
 
-
-
-
 export async function logInPage(ctx) {
     ctx.render(logInPageTemplate(onSubmit))
 
@@ -35,9 +33,10 @@ export async function logInPage(ctx) {
             } else if (!email.includes('@')) {
                 throw new Error('Invalid Email Input!')
             }
-        } catch (error) {
+            await logIn(email, password)
+        } catch (error) {   
             ctx.render(logInPageTemplate(onSubmit, error.message))
         }
     }
 }
-
+// if catch error on login here should remove try catch i api
