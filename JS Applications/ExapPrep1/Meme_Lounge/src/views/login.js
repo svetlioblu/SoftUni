@@ -30,6 +30,7 @@ export async function loginPage(ctx) {
             return alert('All fields are required!')
         }
         await logIn(email, password)
+        ctx.navUpdate()
         ctx.page.redirect('/All Memes')
     }
 }

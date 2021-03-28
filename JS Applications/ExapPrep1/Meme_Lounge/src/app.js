@@ -5,12 +5,18 @@ import { homePage } from './views/home.js'
 import { loginPage } from './views/login.js'
 import { registerPage } from './views/register.js'
 import * as api from '../src/data/api.js'
+import { allMemesPage } from './views/allMemes.js'
+import { deteilsPage } from './views/details.js'
 window.api = api
 const target = document.querySelector('main')
 setUpNavigation()
 page('/', decorateContext, homePage)
 page('/login', decorateContext, loginPage)
 page('/register', decorateContext, registerPage)
+page('/All Memes', decorateContext, allMemesPage)
+page('/details/:id', decorateContext, deteilsPage)
+
+
 
 page.start()
 

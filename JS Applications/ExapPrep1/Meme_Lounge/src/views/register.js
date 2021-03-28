@@ -48,6 +48,7 @@ export async function registerPage(ctx) {
         }
         await register(userName, email, password, gender)
         ev.target.reset()
+        ctx.navUpdate()
         ctx.page.redirect('All Memes')
     }
 }
