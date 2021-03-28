@@ -3,11 +3,15 @@ import page from '../node_modules/page/page.mjs'
 import { logOut } from './data/api.js'
 import { homePage } from './views/home.js'
 import { loginPage } from './views/login.js'
-
+import { registerPage } from './views/register.js'
+import * as api from '../src/data/api.js'
+window.api = api
 const target = document.querySelector('main')
 setUpNavigation()
 page('/', decorateContext, homePage)
 page('/login', decorateContext, loginPage)
+page('/register', decorateContext, registerPage)
+
 page.start()
 
 function decorateContext(ctx, next) {

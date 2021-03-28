@@ -56,10 +56,12 @@ async function logIn(email, password) {
     sessionStorage.setItem('userId', result._id)
     return result
 }
-async function register(email, password) {
-    const result = await postCreate(host + '/users/register', { email, password })
+async function register(userName, email, password, gender) {
+    const result = await postCreate(host + '/users/register', { userName, email, password, gender})
+    sessionStorage.setItem('userName', result.userName)
     sessionStorage.setItem('email', result.email)
     sessionStorage.setItem('authToken', result.accessToken)
+    sessionStorage.setItem('gender', result.gender)
     sessionStorage.setItem('userId', result._id)
     return result
 }
