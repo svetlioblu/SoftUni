@@ -29,7 +29,7 @@ export async function deteilsPage(ctx) {
     let data = await getOne(`http://localhost:3030/data/memes/` + id)
     ctx.render(detailsPageTemplate(data, loggedOwner == data._ownerId, onDelete))
     async function onDelete() {
-        await del(`http://localhost:3030/data/memes/` + id)
+        await del(`http://localhost:3030/data/memes/${id}`)
         ctx.page.redirect('/All Memes')
     }
 }

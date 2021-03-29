@@ -25,7 +25,7 @@ function getOptions(method, body) {
     }
     let token = sessionStorage.getItem('authToken')
     if (token) {
-        options.headers['X-Authorization'] = token
+        options.headers['X-Authorization'] = token 
     }
     if (body) {
         options.headers['Content-Type'] = 'application/json'
@@ -54,6 +54,8 @@ async function logIn(email, password) {
     sessionStorage.setItem('email', result.email)
     sessionStorage.setItem('authToken', result.accessToken)
     sessionStorage.setItem('userId', result._id)
+    sessionStorage.setItem('userName', result.userName)
+    sessionStorage.setItem('gender', result.gender)
     return result
 }
 async function register(userName, email, password, gender) {

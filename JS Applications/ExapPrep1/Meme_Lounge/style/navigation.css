@@ -35,6 +35,9 @@ nav a.active {
     float: right;
 }
 
-/* nav div.user {
+nav div.user {
     display: none;
-} */
+}
+nav div.guest {
+    display: none;
+}

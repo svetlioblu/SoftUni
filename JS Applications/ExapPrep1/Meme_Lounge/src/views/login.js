@@ -26,11 +26,21 @@ export async function loginPage(ctx) {
         const formData = new FormData(ev.target)
         const email = formData.get('email')
         const password = formData.get('password')
-        if (email == '' || password == '') {
-            return alert('All fields are required!')
+        try {
+
+            if (email == '' || password == '') {
+                throw new Error('All fields are required!')
+            }
+            await logIn(email, password)
+            ctx.navUpdate()
+            ctx.page.redirect('/All Memes')
+        } catch (error) {
+            let errorTarget = document.querySelector('.notification')
+            errorTarget.querySelector('span').textContent = error.message
+            errorTarget.style.display = 'block'
+            setTimeout(function () {
+                errorTarget.style.display = 'none';
+            }, 3000);
         }
-        await logIn(email, password)
-        ctx.navUpdate()
-        ctx.page.redirect('/All Memes')
     }
 }

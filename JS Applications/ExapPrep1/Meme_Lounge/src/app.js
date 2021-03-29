@@ -7,6 +7,9 @@ import { registerPage } from './views/register.js'
 import * as api from '../src/data/api.js'
 import { allMemesPage } from './views/allMemes.js'
 import { deteilsPage } from './views/details.js'
+import { createPage } from './views/create.js'
+import { editPage } from './views/edit.js'
+import { myPage } from './views/myProfile.js'
 window.api = api
 const target = document.querySelector('main')
 setUpNavigation()
@@ -14,10 +17,10 @@ page('/', decorateContext, homePage)
 page('/login', decorateContext, loginPage)
 page('/register', decorateContext, registerPage)
 page('/All Memes', decorateContext, allMemesPage)
+page('/create', decorateContext, createPage)
+page('/edit/:id', decorateContext, editPage)
 page('/details/:id', decorateContext, deteilsPage)
-
-
-
+page('/My Profile', decorateContext, myPage)
 page.start()
 
 function decorateContext(ctx, next) {
