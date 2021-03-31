@@ -64,7 +64,7 @@ async function register(email, password) {
     return result
 }
 async function logOut() {
-    const result = await postCreate(host + '/users/logout')
+    const result = await getOne(host + '/users/logout')
     sessionStorage.removeItem('email', result.email)
     sessionStorage.removeItem('authToken', result.accessToken)
     sessionStorage.removeItem('userId', result._id)

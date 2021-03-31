@@ -23,15 +23,25 @@ export async function createPage(ctx) {
     async function onSubmit(ev) {
         ev.preventDefault()
         const formData = new FormData(ev.target)
-        if (Array.from(formData.values()).some(x => x == '')) {
-            return alert('All fields are required!')
-        }
         let title = formData.get('title')
         let description = formData.get('description')
         let imageUrl = formData.get('imageUrl')
-        await postCreate('http://localhost:3030/data/memes', { title, description, imageUrl })
-        ev.target.reset()
-        ctx.navUpdate()
-        ctx.page.redirect('/All Memes')
+        try {
+
+            if (Array.from(formData.values()).some(x => x == '')) {
+                throw new Error('All fields are required!')
+            }
+            await postCreate('http://localhost:3030/data/memes', { title, description, imageUrl })
+            ev.target.reset()
+            ctx.navUpdate()
+            ctx.page.redirect('/All Memes')
+        } catch (error) {
+            let errorTarget = document.querySelector('.notification')
+            errorTarget.querySelector('span').textContent = error.message
+            errorTarget.style.display = 'block'
+            setTimeout(function () {
+                errorTarget.style.display = 'none';
+            }, 3000);
+        }
     }
 }

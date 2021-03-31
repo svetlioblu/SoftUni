@@ -40,15 +40,25 @@ export async function registerPage(ctx) {
         let password = formData.get('password')
         let repeatPass = formData.get('repeatPass')
         let gender = formData.get('gender')
-        if (Array.from(formData.values()).some(x => x == '')) {
-            return alert('All fields are required!')
+        try {
+
+            if (Array.from(formData.values()).some(x => x == '')) {
+                throw new Error('All fields are required!')
+            }
+            if (password != repeatPass) {
+                throw new Error('Passwords Dont match!')
+            }
+            await register(userName, email, password, gender)
+            ev.target.reset()
+            ctx.navUpdate()
+            ctx.page.redirect('All Memes')
+        } catch (error) {
+            let errorTarget = document.querySelector('.notification')
+            errorTarget.querySelector('span').textContent = error.message
+            errorTarget.style.display = 'block'
+            setTimeout(function () {
+                errorTarget.style.display = 'none';
+            }, 3000);
         }
-        if (password != repeatPass) {
-            return alert('Passwords Dont match!')
-        }
-        await register(userName, email, password, gender)
-        ev.target.reset()
-        ctx.navUpdate()
-        ctx.page.redirect('All Memes')
     }
 }

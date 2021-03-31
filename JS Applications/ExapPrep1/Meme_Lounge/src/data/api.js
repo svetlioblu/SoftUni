@@ -53,13 +53,13 @@ async function logIn(email, password) {
     sessionStorage.setItem('email', result.email)
     sessionStorage.setItem('authToken', result.accessToken)
     sessionStorage.setItem('userId', result._id)
-    sessionStorage.setItem('userName', result.userName)
+    sessionStorage.setItem('userName', result.username)
     sessionStorage.setItem('gender', result.gender)
     return result
 }
-async function register(userName, email, password, gender) {
-    const result = await postCreate(host + '/users/register', { userName, email, password, gender})
-    sessionStorage.setItem('userName', result.userName)
+async function register(username, email, password, gender) {
+    const result = await postCreate(host + '/users/register', { username, email, password, gender})
+    sessionStorage.setItem('userName', result.username)
     sessionStorage.setItem('email', result.email)
     sessionStorage.setItem('authToken', result.accessToken)
     sessionStorage.setItem('gender', result.gender)

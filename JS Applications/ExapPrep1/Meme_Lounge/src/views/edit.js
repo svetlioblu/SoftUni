@@ -28,13 +28,24 @@ export async function editPage(ctx) {
     async function onSubmit(ev) {
         ev.preventDefault()
         const formData = new FormData(ev.target)
-        if (Array.from(formData.values()).some(x => x == '')) {
-            return alert('All fields are required!')
-        }
         let title = formData.get('title')
         let description = formData.get('description')
         let imageUrl = formData.get('imageUrl')
-        await putUpdate(`http://localhost:3030/data/memes/${id}`, { title, description, imageUrl })
-        ctx.page.redirect(`/details/${id}`)
+        try {
+
+            if (Array.from(formData.values()).some(x => x == '')) {
+                throw new Error('All fields are required!')
+            }
+            await putUpdate(`http://localhost:3030/data/memes/${id}`, { title, description, imageUrl })
+            ctx.page.redirect(`/details/${id}`)
+
+        } catch (error) {
+            let errorTarget = document.querySelector('.notification')
+            errorTarget.querySelector('span').textContent = error.message
+            errorTarget.style.display = 'block'
+            setTimeout(function () {
+                errorTarget.style.display = 'none';
+            }, 3000);
+        }
     }
 }
