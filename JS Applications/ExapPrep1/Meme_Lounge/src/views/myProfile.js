@@ -27,7 +27,7 @@ let itemTemplate = (item) => html`
 export async function myPage(ctx) {
     let ownerId = sessionStorage.getItem('userId')
     let data = await getOne(`http://localhost:3030/data/memes?where=_ownerId%3D%22${ownerId}%22&sortBy=_createdOn%20desc`)
-    ctx.render(myPageTemplate(data, checkLogged, checkLoggedName))
+     ctx.render(myPageTemplate(data, checkLogged, checkLoggedName))
 }
 function checkLogged() {
     let person = sessionStorage.getItem('email')
