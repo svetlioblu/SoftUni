@@ -5,14 +5,20 @@ import { homePage } from './views/home.js'
 import { loginPage } from './views/login.js'
 import { registerPage } from './views/register.js'
 import { allListingsPage } from './views/allListings.js'
+import { detailsPage } from './views/details.js'
+import { createPage } from './views/createListing.js'
+import { editPage } from './views/edit.js'
+import { myListningsPage } from './views/myListnings.js'
 const target = document.getElementById('site-content')
 setNavigation()
 page('/', decorateContext, homePage)
 page('/login', decorateContext, loginPage)
 page('/register', decorateContext, registerPage)
 page('/All-Listings', decorateContext, allListingsPage)
-
-
+page('/details/:id', decorateContext, detailsPage)
+page('/create', decorateContext, createPage)
+page('/edit/:id', decorateContext, editPage)
+page('/My-Listings', decorateContext, myListningsPage)
 
 page.start()
 
@@ -34,8 +40,11 @@ function setNavigation() {
     }
 }
 
-document.getElementById('logOutBtn').addEventListener('click', async (ev) => {
-    await logOut()
-    setNavigation()
-    page.redirect('/')
+document.getElementById('logOutBtn').addEventListener('click', (ev) => {
+    let confirmation = confirm('Are yo usure that want to LogOut?')
+    
+        logOut()
+        setNavigation()
+        page.redirect('/')
+    
 })

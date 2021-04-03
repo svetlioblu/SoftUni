@@ -4,7 +4,6 @@ async function request(url, options) {
         const response = await fetch(url, options)
         if (response.ok == false) {
             const error = await response.json()
-            alert(error.message)
             throw new Error(error.message)
         }
         try {
