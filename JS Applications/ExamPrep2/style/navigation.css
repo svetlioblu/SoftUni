@@ -1,6 +1,7 @@
 nav {
     background-color: #333;
     overflow: hidden;
+
 }
 
 #profile, #guest {
@@ -30,4 +31,7 @@ nav a:hover {
 nav a.active {
     background-color: #4CAF50;
     color: white;
+}
+#guest, #profile {
+    display: none;
 }
