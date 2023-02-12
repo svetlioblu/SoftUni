@@ -1,3 +1,2 @@
-let a =6
-a++
-console.log(a)
+
+console.log(300 *100 / 380)
