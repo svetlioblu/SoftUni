@@ -1,1 +1,4 @@
 https://http.cat/[status_code]
+========
+telnet -> o www.physiotherapisto.com 80 -> GET / HTTP/1.1 -> HOST: physiotherapisto.com ->2x enter
+========

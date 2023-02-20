@@ -1,2 +1,5 @@
 
-console.log(300 *100 / 380)
+let a = ['aple','orange','pineapple']
+
+let b =a.slice(-1)
+console.log(b);
