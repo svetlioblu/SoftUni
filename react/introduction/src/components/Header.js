@@ -1,6 +1,11 @@
 function Header() {
+  let myFunc = ()=> {
+
+    return '5';
+  }
     return (
         <div>
+          <button style={{marginleft:"20px"}} onClick={myFunc}>5</button>  <div id="screen">my div</div>
          {/* <!--header section start --> */}
         <div className="header_section">
           <div className="header_left">
@@ -30,7 +35,7 @@ function Header() {
               </div>
             </nav>
             <div className="banner_main">
-              <h1 className="banner_taital">financial \/Service</h1>
+              <h1 className="banner_taital">financial /Service</h1>
               <p className="banner_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever </p>
               <div className="btn_main">
                 <div className="more_bt"><a href="#">Read More </a></div>
