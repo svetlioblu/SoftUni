@@ -1,6 +1,6 @@
 start: npx create-react-app .  ->npm start
 npm run build ->  ready to deploy to production
-JSX -> always closing tag ; coment in JS; All in one element
+JSX -> always closing tag ; coment in JS; All in one element; shtar JS in {}
 
 
  
