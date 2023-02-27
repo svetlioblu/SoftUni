@@ -7,12 +7,15 @@ function App() {
     let input = e.target.innerHTML
     switch (input) {
       case '+':
-        let temp = input.search('+')
+        // console.log(input)
+        // let temp = input.search(/\+/g)
+        // if (temp != -1) { input = '' }
         
         break;
       default:
 
     }
+    console.log(input);
     setResult(state => state + input)
   }
   return (
