@@ -7,6 +7,7 @@ function App() {
     let input = e.target.innerHTML
     switch (input) {
       case '+':
+        let temp = input.search('+')
         
         break;
       default:
