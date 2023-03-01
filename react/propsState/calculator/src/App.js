@@ -8,9 +8,29 @@ function App() {
     let input = e.target.innerHTML
     switch (input) {
       case '+':
-        let checkIfExists = result.search(/\+/g)
-        if (checkIfExists != -1) { input = '' }
+      case '-':
+      case 'x':
+      case '÷':
+        let checkIfExists = result.search(/[+\-x÷']/g)
+        if (checkIfExists !== -1) { input = '' }
         break;
+      case '7':
+      case '8':
+      case '9':
+      case '4':
+      case '5':
+      case '6':
+      case '2':
+      case '1':
+      case '3':
+      case '0':
+        if (result.length === 1 && result[0] === '0') { setResult('') }
+        break;
+      case 'AC':
+        setResult('0')
+        input=''
+        break;
+
       default:
     }
 

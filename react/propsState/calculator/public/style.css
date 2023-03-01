@@ -15,6 +15,7 @@
     padding-block-end: 0.5rem;
     padding-inline-end: 0.75rem;
     text-align: end;
+    font-family: cursive;
   }
   .calculator__keys {
     display: grid;
