@@ -1,19 +1,24 @@
 import Todo from "./Todo";
 
-import { useState } from 'react'
-
 const ToDoList = ({ todos, setTodos }) => {
-    let [isCompletedStatus, setIscompleatedStatus] = useState([])
-    // console.log(isCompletedStatus)
 
     const toggleStatus = (id) => {
         setTodos(state => state.map(c => c.id === id ? ({ ...c, isCompleted: !c.isCompleted }) : c))
 
     }
     return (
-        <tbody>
-            {todos.map(todo => <Todo key={todo.id} {...todo} toggleStatus={toggleStatus} />)}
-        </tbody>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th className="table-header-task">Task</th>
+                    <th className="table-header-status">Status</th>
+                    <th className="table-header-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {todos.map(todo => <Todo key={todo._id} {...todo} toggleStatus={toggleStatus} setTodos={setTodos} todos />)}
+            </tbody>
+        </table>
     );
 }
 

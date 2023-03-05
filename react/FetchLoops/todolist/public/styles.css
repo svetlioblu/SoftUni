@@ -44,7 +44,7 @@ body {
   background: #24292f;
 }
 
-.btn {
+/* .btn {
   border: none;
   padding: 5px 10px;
   height: 40px;
@@ -57,7 +57,7 @@ body {
 .btn:hover {
   opacity: 0.9;
   box-shadow: 1px 2px 8px rgb(245, 245, 245);
-}
+} */
 
 /* Navigation */
 .navigation-header {
@@ -281,3 +281,6 @@ body {
 .footer p {
   font-size: 1.2rem;
 }
+
+/* import for modal form */
+

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-// Example 1
+//GET Example 1
 function App() {
   let [demoData, setDemoData] = useState([]);
   useEffect(() => {
@@ -18,14 +18,41 @@ function App() {
   );
 }
 
-// Example 2
+//GET Example 2
 let [todos, setTodos] = useState([])
 useEffect(() => {
   fetch('http://localhost:3030/jsonstore/todos')
     .then(res => res.json())
     .then(data => {
-      let result = Object.keys(data).map(id => ({ id, ...data[id] }))
+      let result = Object.keys(data).map(id => ({ id, ...data[id] })) //modular inputed data to Array
       setTodos(result)
     })
     .catch(err => console.log(`Error ${err}`))
 }, []);
+
+//POST Ex 1
+fetch('http://localhost:3030/jsonstore/todos', {
+  method: 'POST',
+  body: JSON.stringify({
+    text: taskText,
+    isCompleted: false
+  }),
+  headers: {
+    'Content-type': 'application/json'
+  }
+})
+  .then(res => res.json())
+  .then(row => setTodos([...todos, row])) //adding the new record to the existing state.Watch the format!
+  .catch((err) => {
+    console.log(err.message)
+  })
+  // DEL Ex 1
+  function delHandler(id) {
+    fetch('http://localhost:3030/jsonstore/todos/' + id, {
+        method: 'DELETE'
+    })
+        .catch((err) => {
+            console.log(err.message)
+        })
+
+}
