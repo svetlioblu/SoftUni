@@ -1,6 +1,7 @@
 start: npx create-react-app .  ->npm start
 npm run build ->  ready to deploy to production
 JSX -> always closing tag ; coment in JS; All in one element; shtar JS in {}
-Loop -> always add "Key" to the element 
+Loop -> always add "Key" to the element
+Routing -> npm i react-router-dom
 
  
