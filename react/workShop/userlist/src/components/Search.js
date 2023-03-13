@@ -26,12 +26,12 @@ const Search = () => {
 
                 <div className="filter">
                     <span>Search Criteria:</span>
-                    <select name="criteria" className="criteria" value="">
-                        <option value="">Not selected</option>
-                        <option value="">First Name</option>
-                        <option value="">Last Name</option>
-                        <option value="">Email</option>
-                        <option value="">Phone</option>
+                    <select name="criteria" className="criteria">
+                        <option value="Not selected">Not selected</option>
+                        <option value="First Name">First Name</option>
+                        <option value="Last Name">Last Name</option>
+                        <option value="Email">Email</option>
+                        <option value="Phone">Phone</option>
                     </select>
                 </div>
             </form>

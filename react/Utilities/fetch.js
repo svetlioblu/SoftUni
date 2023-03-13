@@ -46,6 +46,7 @@ fetch('http://localhost:3030/jsonstore/todos', {
   .catch((err) => {
     console.log(err.message)
   })
+  
   // DEL Ex 1
   function delHandler(id) {
     fetch('http://localhost:3030/jsonstore/todos/' + id, {
@@ -56,3 +57,22 @@ fetch('http://localhost:3030/jsonstore/todos', {
         })
 
 }
+
+// Service Component
+const baseUrl = 'http://localhost:3005/api/users'
+
+const getAll = async () => {
+    const response = await fetch(baseUrl)
+    const result = await response.json()
+
+    return result.users
+}
+
+export { getAll }
+//++ app js
+const [users, setUsers] = useState()
+  useEffect(() => {
+    userService.getAll()
+      .then(setUsers)
+      .catch(err => console.log(err))
+  }, [])
