@@ -21,8 +21,8 @@ function App() {
   } 
   export default App;
 
-  //2. Controlled Form
-  
+  //2. Controlled Form and simple validation
+
   function App() {
     //Controlled, value comes from the useState. Using Value and onChange
     let [input, setInput] = useState({
