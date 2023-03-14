@@ -22,6 +22,7 @@ function App() {
           <Search />
           <UserList users={users} />
         </section>
+        
       </main>
       <Footer />
     </>
