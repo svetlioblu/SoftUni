@@ -1,7 +1,7 @@
 import * as utils from '../utils/dateUtil.js'
 
 
-const User = ({user, userDetailsHandler }) => {
+const User = ({user, userInfoHandler }) => {
 
     return (
         <tr>
@@ -33,7 +33,7 @@ const User = ({user, userDetailsHandler }) => {
                         </path>
                     </svg>
                 </button>
-                <button className="btn info-btn" title="Info" onClick={() => userDetailsHandler(user._id)}>
+                <button className="btn info-btn" title="Info" onClick={() => userInfoHandler(user._id)}>
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info"
                         className="svg-inline--fa fa-info" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="-150 0 512 612">

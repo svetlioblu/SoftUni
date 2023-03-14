@@ -4,27 +4,22 @@ import UserDetails from "./UserDetails";
 import * as userService from "../services/userService.js"
 
 const UserList = ({ users }) => {
-    const [userDetails, setUserDetails] = useState(null)
+    const [userInfo, setUserInfo] = useState(null)
     const [showUserDetails, setShowUserDetails] = useState(false)
 
 
-    const userDetailsHandler = async (id) => {
+    const userInfoHandler = async (id) => {
         const oneUserData = await userService.getOne(id)
             .catch(err => console.log(err))
-
-        setUserDetails(oneUserData)
-        console.log(userDetails)
-        //setShowUserDetails(true)
+        setUserInfo(oneUserData)
+        setShowUserDetails(true)
     }
     function closeUserDetailsHandler() {
         setShowUserDetails(false)
     }
     return (
         <>
-            {showUserDetails && <UserDetails
-                closeUserDetailsHandler={closeUserDetailsHandler}
-                userDetails={userDetails}
-            />}
+            {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />}
             < div className="table-wrapper" >
                 {/* <!-- Loading spinner  --> */}
                 {/* < !-- < div className = "spinner" ></div > --> */}
@@ -84,7 +79,7 @@ const UserList = ({ users }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(user => <User key={user._id} user={user} userDetailsHandler={userDetailsHandler} />)}
+                        {users.map(user => <User key={user._id} user={user} userInfoHandler={userInfoHandler} />)}
                     </tbody>
                 </table>
             </div >
