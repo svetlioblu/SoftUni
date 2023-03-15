@@ -1,0 +1,11 @@
+.todo-btn {
+    background: #24292f;
+    border: none;
+    padding: 5px 10px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    margin-left: 8px;
+}

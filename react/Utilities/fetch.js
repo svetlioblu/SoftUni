@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-//GET Example 1
+//GET Example  1
 function App() {
   let [demoData, setDemoData] = useState([]);
   useEffect(() => {
