@@ -1,8 +1,8 @@
 import * as utils from '../utils/dateUtil.js'
 
 
-const User = ({user, userInfoHandler }) => {
-
+const User = ({ user, userInfoHandler }) => {
+    
     return (
         <tr>
             <td>

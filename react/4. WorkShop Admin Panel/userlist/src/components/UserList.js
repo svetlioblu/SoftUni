@@ -2,10 +2,14 @@ import { useState } from 'react'
 import User from "./User";
 import UserDetails from "./UserDetails";
 import * as userService from "../services/userService.js"
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import App from '../App';
+
 
 const UserList = ({ users }) => {
     const [userInfo, setUserInfo] = useState(null)
     const [showUserDetails, setShowUserDetails] = useState(false)
+    const navigate = useNavigate()
 
 
     const userInfoHandler = async (id) => {
@@ -13,13 +17,18 @@ const UserList = ({ users }) => {
             .catch(err => console.log(err))
         setUserInfo(oneUserData)
         setShowUserDetails(true)
+        navigate("/details")
     }
     function closeUserDetailsHandler() {
         setShowUserDetails(false)
     }
     return (
         <>
-            {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />}
+            <Routes>
+                <Route path='/'/>
+                <Route path='/details' element={<UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />} />
+            </Routes>
+            {/* {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />} */}
             < div className="table-wrapper" >
                 {/* <!-- Loading spinner  --> */}
                 {/* < !-- < div className = "spinner" ></div > --> */}
