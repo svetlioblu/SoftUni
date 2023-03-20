@@ -2,33 +2,29 @@ import { useState } from 'react'
 import User from "./User";
 import UserDetails from "./UserDetails";
 import * as userService from "../services/userService.js"
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import App from '../App';
+import Form from './Form';
+
 
 
 const UserList = ({ users }) => {
-    const [userInfo, setUserInfo] = useState(null)
+    const [userInfo, setUserInfo] = useState('')
     const [showUserDetails, setShowUserDetails] = useState(false)
-    const navigate = useNavigate()
-
+    const [showCreateForm, setShowCreateForm] = useState(false)
 
     const userInfoHandler = async (id) => {
         const oneUserData = await userService.getOne(id)
             .catch(err => console.log(err))
         setUserInfo(oneUserData)
         setShowUserDetails(true)
-        navigate("/details")
+
     }
     function closeUserDetailsHandler() {
         setShowUserDetails(false)
     }
     return (
         <>
-            <Routes>
-                <Route path='/'/>
-                <Route path='/details' element={<UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />} />
-            </Routes>
-            {/* {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />} */}
+            {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />}
+            {showCreateForm && <Form />}
             < div className="table-wrapper" >
                 {/* <!-- Loading spinner  --> */}
                 {/* < !-- < div className = "spinner" ></div > --> */}
@@ -92,7 +88,7 @@ const UserList = ({ users }) => {
                     </tbody>
                 </table>
             </div >
-            < button className="btn-add btn" > Add new user</button >
+            < button className="btn-add btn" onClick ={()=>setShowCreateForm(true)}> Add new user</button >
 
             <div className="pagination position">
                 <div className="limits">

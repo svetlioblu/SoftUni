@@ -76,3 +76,11 @@ const [users, setUsers] = useState()
       .then(setUsers)
       .catch(err => console.log(err))
   }, [])
+  
+//take one user
+  const getOne = async (id) => {
+    const response = await fetch(baseUrl + id)
+    const result = await response.json()
+
+    return result.user
+}

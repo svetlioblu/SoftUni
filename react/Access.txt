@@ -6,8 +6,8 @@ Routing -> npm i react-router-dom => index.js(import{BrpwserRouter} from 'react-
 in component: import{Routes, Route} from 'react-router-dom' => <Routes> <Route path='/' element={<Home/>} </Routes>
 import{Link, useNavigate, useParams} from 'react-router-dom'
 async Service component -> can use remote data into async functions into the component body
-
+context ->
 
 E.G architectire:
-Split on Components -> define Routing
+Split on Components -> define Routing ->set context
  
