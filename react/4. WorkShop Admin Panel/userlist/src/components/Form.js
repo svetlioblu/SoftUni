@@ -7,21 +7,21 @@ const Form = () => {
         email: '',
         phoneNumber: '',
         imageUrl: '',
-        address: {
-            country: '',
-            city: '',
-            street: '',
-            streetNumber: ''
-        }
+        country: '',
+        city: '',
+        street: '',
+        streetNumber: ''
+
     })
+
     function onChangeHandler(e) {
-        console.log(e)
         setFieldsData(state => ({ ...state, [e.target.name]: e.target.value }))
         
     }
     function onSubmitHandler(e) {
         e.preventDefault()
-        console.log(fieldsData);
+        console.log(userService.create(fieldsData))
+
     }
     return (
         <div className="overlay">
@@ -96,7 +96,7 @@ const Form = () => {
                                 <label htmlFor="country">Country</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-map"></i></span>
-                                    <input id="country" name="country" type="text" value={fieldsData.address.country} onChange={onChangeHandler} />
+                                    <input id="country" name="country" type="text" value={fieldsData.country} onChange={onChangeHandler} />
                                 </div>
                                 <p className="form-error">
                                     Country should be at least 2 characters long!
@@ -106,7 +106,7 @@ const Form = () => {
                                 <label htmlFor="city">City</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-city"></i></span>
-                                    <input id="city" name="city" type="text" value={fieldsData.address.city} onChange={onChangeHandler} />
+                                    <input id="city" name="city" type="text" value={fieldsData.city} onChange={onChangeHandler} />
                                 </div>
                                 <p className="form-error">
                                     City should be at least 3 characters long!
@@ -119,7 +119,7 @@ const Form = () => {
                                 <label htmlFor="street">Street</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-map"></i></span>
-                                    <input id="street" name="street" type="text" value={fieldsData.address.street} onChange={onChangeHandler} />
+                                    <input id="street" name="street" type="text" value={fieldsData.street} onChange={onChangeHandler} />
                                 </div>
                                 <p className="form-error">
                                     Street should be at least 3 characters long!
@@ -129,7 +129,7 @@ const Form = () => {
                                 <label htmlFor="streetNumber">Street number</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-house-chimney"></i></span>
-                                    <input id="streetNumber" name="streetNumber" type="text" value={fieldsData.address.streetNumber} onChange={onChangeHandler} />
+                                    <input id="streetNumber" name="streetNumber" type="text" value={fieldsData.streetNumber} onChange={onChangeHandler} />
                                 </div>
                                 <p className="form-error">
                                     Street number should be a positive number!
