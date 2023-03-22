@@ -20,7 +20,7 @@ const create = async (userData) => {
         country,
         city,
         street,
-        streetNumber:Number(streetNumber),
+        streetNumber: Number(streetNumber),
     }
     const response = await fetch(baseUrl, {
         method: 'POST',
@@ -30,9 +30,17 @@ const create = async (userData) => {
         body: JSON.stringify(data)
     })
     const result = await response.json()
-    
+
     return result.user;
 }
 
-export { getAll, getOne, create }
+const deleteUser = async (id) => {
+    const response = await fetch(baseUrl + id, {
+        method: 'DELETE'
+    })
+    const result = response.json()
+    return result
+}
+
+export { getAll, getOne, create, deleteUser }
 

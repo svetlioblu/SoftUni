@@ -21,11 +21,15 @@ const UserList = ({ users, setUsers }) => {
     function closeUserDetailsHandler() {
         setShowUserDetails(false)
     }
-    console.log(users);
+    function delUser(id) {
+        userService.deleteUser(id)
+            .then(res => setUsers(state => state.filter(x => x._id !== res.userId)))
+            .catch(err => console.log(err))
+    }
     return (
         <>
             {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />}
-            {showCreateForm && <Form setShowCreateForm={setShowCreateForm} setUsers={setUsers}/>}
+            {showCreateForm && <Form setShowCreateForm={setShowCreateForm} setUsers={setUsers} />}
             < div className="table-wrapper" >
                 {/* <!-- Loading spinner  --> */}
                 {/* < !-- < div className = "spinner" ></div > --> */}
@@ -85,7 +89,7 @@ const UserList = ({ users, setUsers }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(user => <User key={user._id} user={user} userInfoHandler={userInfoHandler} />)}
+                        {users.map(user => <User key={user._id} user={user} userInfoHandler={userInfoHandler} delUser={delUser} />)}
                     </tbody>
                 </table>
             </div >
