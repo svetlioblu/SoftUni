@@ -20,9 +20,8 @@ const create = async (userData) => {
         country,
         city,
         street,
-        streetNumber,
-    };
-    
+        streetNumber:Number(streetNumber),
+    }
     const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
@@ -30,7 +29,7 @@ const create = async (userData) => {
         },
         body: JSON.stringify(data)
     })
-    const result = await response.json();
+    const result = await response.json()
     
     return result.user;
 }

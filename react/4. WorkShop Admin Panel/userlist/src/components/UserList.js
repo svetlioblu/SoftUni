@@ -6,7 +6,7 @@ import Form from './Form';
 
 
 
-const UserList = ({ users }) => {
+const UserList = ({ users, setUsers }) => {
     const [userInfo, setUserInfo] = useState('')
     const [showUserDetails, setShowUserDetails] = useState(false)
     const [showCreateForm, setShowCreateForm] = useState(false)
@@ -21,10 +21,11 @@ const UserList = ({ users }) => {
     function closeUserDetailsHandler() {
         setShowUserDetails(false)
     }
+    console.log(users);
     return (
         <>
             {showUserDetails && <UserDetails {...userInfo} closeUserDetailsHandler={closeUserDetailsHandler} />}
-            {showCreateForm && <Form />}
+            {showCreateForm && <Form setShowCreateForm={setShowCreateForm} setUsers={setUsers}/>}
             < div className="table-wrapper" >
                 {/* <!-- Loading spinner  --> */}
                 {/* < !-- < div className = "spinner" ></div > --> */}
@@ -88,7 +89,7 @@ const UserList = ({ users }) => {
                     </tbody>
                 </table>
             </div >
-            < button className="btn-add btn" onClick ={()=>setShowCreateForm(true)}> Add new user</button >
+            < button className="btn-add btn" onClick={() => setShowCreateForm(true)}> Add new user</button >
 
             <div className="pagination position">
                 <div className="limits">

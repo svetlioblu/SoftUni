@@ -20,7 +20,7 @@ function App() {
       <main className="main">
         <section className="card users-container">
           <Search />
-          <UserList users={users} />
+          <UserList users={users} setUsers={setUsers} />
         </section>
       </main>
       <Footer />

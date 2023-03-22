@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import * as userService from '../services/userService.js'
-const Form = () => {
+const Form = ({ setUsers, setShowCreateForm, }) => {
     const [fieldsData, setFieldsData] = useState({
         firstName: '',
         lastName: '',
@@ -16,12 +16,14 @@ const Form = () => {
 
     function onChangeHandler(e) {
         setFieldsData(state => ({ ...state, [e.target.name]: e.target.value }))
-        
+
     }
     function onSubmitHandler(e) {
         e.preventDefault()
-        console.log(userService.create(fieldsData))
-
+        userService.create(fieldsData)
+            .then(res => setUsers(state => ([...state, res])))
+            .then(setShowCreateForm(false))
+            .catch(error => console.log(error))
     }
     return (
         <div className="overlay">
