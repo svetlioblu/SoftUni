@@ -1,12 +1,12 @@
 const http = require('http')
 const fs = require('fs')
-// const { render } = require('lithtml')
+const handlebars = require('handlebars')
 
 
 const server = http.createServer((req, res) => {
     console.log(req.url)
     if (req.url === '/' && req.method == 'GET') {
-        fs.readFile('./resources/views/home/index.html', (err, data) => {
+        fs.readFile('./resources/views/home/index.hbc', (err, data) => {
             if (err) {
                 console.log(err)
                 res.writeHead(500, { 'Content-Type': 'text/html' })
@@ -14,9 +14,26 @@ const server = http.createServer((req, res) => {
                 res.end()
                 return
             } else {
+                const template = handlebars.compile(data.toString());
+                const cats = [{
+                    breed: 'Bombay Cat',
+                    description: 'Dominant and aggressive to other cats. Will probably eat you in your',
+                    img: 'https://cdn.pixabay.com/photo/2018/08/08/05/12/cat-3591348_1280.jpg'
+                }
+                    , {
+                    breed: 'Shorthair Cat',
+                    description: 'British and aggressive to other cats. Will probably eat you in your',
+                    img: 'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg'
+                },
+                {
+                    breed: 'Pretty Kitty',
+                    description: 'Dominant and aggressive to other cats. Will probably eat you in your',
+                    img: 'https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_1280.jpg'
+                }]
+
+                const html = template({ cats: cats });
                 res.writeHead(200, { 'Content-Type': 'text/html' })
-                res.write(data)
-                res.end()
+                res.end(html)
             }
 
         })
