@@ -2,11 +2,13 @@ const http = require('http')
 const fs = require('fs')
 const handlebars = require('handlebars')
 
+const cats = require('./resources/content/catsStore/catsStore')
+const { log } = require('console')
 
 const server = http.createServer((req, res) => {
     console.log(req.url)
     if (req.url === '/' && req.method == 'GET') {
-        fs.readFile('./resources/views/home/index.hbc', (err, data) => {
+        fs.readFile('./resources/views/home/index.hbc', 'UTF-8', (err, data) => {
             if (err) {
                 console.log(err)
                 res.writeHead(500, { 'Content-Type': 'text/html' })
@@ -14,32 +16,16 @@ const server = http.createServer((req, res) => {
                 res.end()
                 return
             } else {
-                const template = handlebars.compile(data.toString());
-                const cats = [{
-                    breed: 'Bombay Cat',
-                    description: 'Dominant and aggressive to other cats. Will probably eat you in your',
-                    img: 'https://cdn.pixabay.com/photo/2018/08/08/05/12/cat-3591348_1280.jpg'
-                }
-                    , {
-                    breed: 'Shorthair Cat',
-                    description: 'British and aggressive to other cats. Will probably eat you in your',
-                    img: 'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg'
-                },
-                {
-                    breed: 'Pretty Kitty',
-                    description: 'Dominant and aggressive to other cats. Will probably eat you in your',
-                    img: 'https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_1280.jpg'
-                }]
-
+                const template = handlebars.compile(data.toString())
                 const html = template({ cats: cats });
                 res.writeHead(200, { 'Content-Type': 'text/html' })
-                res.end(html)
+                res.write(html)
+                res.end()
             }
-
         })
     }
     if (req.url === '/content/styles/site.css' && req.method == 'GET') {
-        fs.readFile('./resources/content/styles/site.css', (err, data) => {
+        fs.readFile('./resources/content/styles/site.css', 'UTF-8', (err, data) => {
             if (err) {
                 console.log(err)
                 return
@@ -59,6 +45,18 @@ const server = http.createServer((req, res) => {
             res.write(data)
             res.end()
         })
+    }
+    if (req.url === '/cats/add-cat' && req.method === 'GET') {
+        fs.readFile('./resources/views/addCat.html', 'UTF-8', (err, data) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            res.writeHead(200, { 'content-Type': 'text/html' })
+            res.write(data)
+            res.end()
+        })
+
     }
 })
 server.listen(5000, () => { console.log('The server listening on PORT 5000...') })
