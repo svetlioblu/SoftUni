@@ -3,10 +3,9 @@ const fs = require('fs')
 const handlebars = require('handlebars')
 
 const cats = require('./resources/content/catsStore/catsStore')
-const { log } = require('console')
 
 const server = http.createServer((req, res) => {
-    console.log(req.url)
+    
     if (req.url === '/' && req.method == 'GET') {
         fs.readFile('./resources/views/home/index.hbc', 'UTF-8', (err, data) => {
             if (err) {
@@ -17,7 +16,7 @@ const server = http.createServer((req, res) => {
                 return
             } else {
                 const template = handlebars.compile(data.toString())
-                const html = template({ cats: cats });
+                const html = template({ cats: cats })
                 res.writeHead(200, { 'Content-Type': 'text/html' })
                 res.write(html)
                 res.end()
