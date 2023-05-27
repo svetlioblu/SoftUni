@@ -3,3 +3,4 @@ npm i -> install the dependacies from te packaje.json
 npm i nodemon -D -> installl nodemon as dev dependance, will not installin the end product
 npm i express 
 npm i express-handlebars
+npm i uniqid
