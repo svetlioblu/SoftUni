@@ -5,6 +5,7 @@ const app = express()
 const expressConfig = require('./config/expressConfig')
 const handlebarsConfig = require('./config/handlebarsConfig')
 const homeController = require('./controllers/homeController')
+const cubeController = require('./controllers/cubeController')
 
 const PORT = 5000
 
@@ -14,7 +15,8 @@ expressConfig(app)
 //config handlebars
 handlebarsConfig(app)
 
-//Routes 
+//Routes (Modular Routes)
 app.use(homeController)
+app.use('/cubes', cubeController) // will work only for paths, having '/cubes'
 
 app.listen(PORT, () => { console.log(`Server listening on port ${PORT}...`) })
