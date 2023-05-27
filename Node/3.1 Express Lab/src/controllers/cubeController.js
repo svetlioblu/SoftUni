@@ -11,7 +11,7 @@ router.get('/create', (req, res) => {
 
 //Send the data when the form is submited. The form has action /cubes/create and meth=POST
 router.post('/create', (req, res) => {
-    console.log(cubeManager.getAll())
+
     // req.body have the parced data to object due to the express middleware bodyparser config
     const { name, description, imageUrl, difficultyLevel } = req.body
     //The idea of destructoring is to have validation ...

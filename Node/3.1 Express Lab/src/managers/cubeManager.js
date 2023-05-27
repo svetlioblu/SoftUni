@@ -12,5 +12,6 @@ exports.create = (cubeData) => {
         ...cubeData
     }
     cubes.push(newCube)
+    
     return newCube
 }
