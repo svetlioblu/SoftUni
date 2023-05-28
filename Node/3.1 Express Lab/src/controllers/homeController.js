@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     const { search, from, to } = req.query
 
     const cubes = cubeManager.getAll(search, from, to)
-    res.render('home', { cubes })
+    res.render('home', { cubes, search, from, to })
 
 })
 
