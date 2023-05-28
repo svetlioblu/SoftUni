@@ -1,3 +1,5 @@
+// the demo into the slides not work. Works only with promises, not with callbacks
+
 const mongodb = require('mongodb');
 
 const MongoClient = mongodb.MongoClient;
