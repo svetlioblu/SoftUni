@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 const cubeManager = require('../managers/cubeManager')
 
+
 // !the controller in index.js is set to /cubes/create. Main layout a href = /cubes/create
 //render the form create page
 router.get('/create', (req, res) => {
@@ -18,6 +19,13 @@ router.post('/create', (req, res) => {
     cubeManager.create({ name, description, imageUrl, difficultyLevel: Number(difficultyLevel) })
 
     res.redirect('/')
+})
+
+router.get('/:cubeId/details', (req, res) => {
+    const cubeId = req.params.cubeId
+    const cube = cubeManager.getOne(cubeId)
+
+    res.render('details', { cube })
 })
 
 module.exports = router

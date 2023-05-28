@@ -5,6 +5,7 @@ const cubes = []
 
 //named export
 exports.getAll = () => cubes.slice()
+exports.getOne = (cubeId) => cubes.slice().find(x => x.id === cubeId)
 
 exports.create = (cubeData) => {
     const newCube = {
@@ -12,6 +13,6 @@ exports.create = (cubeData) => {
         ...cubeData
     }
     cubes.push(newCube)
-    
+
     return newCube
 }
