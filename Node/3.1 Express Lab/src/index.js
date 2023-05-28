@@ -18,5 +18,8 @@ handlebarsConfig(app)
 //Routes (Modular Routes)
 app.use(homeController)
 app.use('/cubes', cubeController) // will work only for paths, having '/cubes'
+app.get('*', (req, res) => {
+    res.redirect('/404')
+})
 
 app.listen(PORT, () => { console.log(`Server listening on port ${PORT}...`) })
