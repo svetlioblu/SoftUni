@@ -4,7 +4,13 @@ const uniqId = require('uniqid')
 const cubes = []
 
 //named export
-exports.getAll = () => cubes.slice()
+exports.getAll = (search, from, to) => {
+    let result = cubes.slice()
+    if (search) {
+        result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()))
+    }
+    return result
+}
 exports.getOne = (cubeId) => cubes.slice().find(x => x.id === cubeId)
 
 exports.create = (cubeData) => {
