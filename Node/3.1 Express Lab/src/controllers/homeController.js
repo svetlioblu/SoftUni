@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
 
     const cubes = cubeManager.getAll(search, from, to)
     res.render('home', { cubes, search, from, to })
-
 })
 
 router.get('/about', (req, res) => {
