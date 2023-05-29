@@ -7,8 +7,10 @@ async function connnectDb() {
 
     console.log('DB connected successfuly !')
 
-    const users = await User.find()
-    console.log(users)
+    const users = await User.find({ firstName: 'Predator' })
+    // can log users or to call method defined into a model
+    users.forEach(user => user.greet())
+
 }
 
 connnectDb()
