@@ -5,4 +5,5 @@ npm i express
 npm i express-handlebars
 npm i uniqid
 
-npm i mongodb
+npm i mongodb   (DB driver)
+npm i mongoose (no driver required)
