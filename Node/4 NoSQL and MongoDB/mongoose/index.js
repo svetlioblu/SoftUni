@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const User = require('./models/USER')
+const Admin = require('./models/Admin')
 
 async function connnectDb() {
     await mongoose.connect('mongodb://127.0.0.1:27017/user-list')
@@ -52,6 +53,10 @@ async function connnectDb() {
     //DELETE
     // await User.findByIdAndDelete('641a96c961a3ee1fbcf202e9')
 
+    //=====================Create a new Collection(table) in currend DB=============================
+    await Admin.create({ adminName: 'Svetoslav', adminAdress: 'Lulin 80' })
+
+    
 
 
 
