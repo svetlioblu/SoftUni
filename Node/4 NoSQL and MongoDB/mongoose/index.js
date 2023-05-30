@@ -13,8 +13,30 @@ async function connnectDb() {
     const filteredUsers = await User.find({ firstName: 'Predator' })
     const filteredAUser = await User.findOne({ firstName: 'Predator' })
 
-    //Create
-    
+    //Create (two ways)
+
+    // const newUser = new User({ 
+    //     isDeleted: false,
+    //     firstName: 'Ivaylo',
+    //     lastName: 'Papazov',
+    //     email: 'ivko@abv.bg',
+    //     imageUrl: 'noImg',
+    //     phoneNumber: '089 98273654',
+    //     address: 'Moderno Predgradie 13'
+    // })
+    // await newUser.save()
+//================================================
+    // const newUser = await User.create({
+    //     isDeleted: false,
+    //     firstName: 'Tanka',
+    //     lastName: 'Ivanova',
+    //     email: 'ivko@abv.bg',
+    //     imageUrl: 'noImg',
+    //     phoneNumber: '089 98273654',
+    //     address: 'Moderno Predgradie 100'
+    // })
+
+
 
 
     // can log users or to call method defined into a model
@@ -23,7 +45,7 @@ async function connnectDb() {
     //=> users.forEach(user => console.log(user.info))
 
 
-    console.log(allUsers)
+    console.log()
 
 }
 
