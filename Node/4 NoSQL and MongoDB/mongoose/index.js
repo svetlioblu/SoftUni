@@ -13,7 +13,7 @@ async function connnectDb() {
     const userById = await User.findById('640f3c9d8ede2e2d040c8a08')
     const filteredUsers = await User.find({ firstName: 'Predator' })
     const filteredAUser = await User.findOne({ firstName: 'Predator' })
-
+    const noAliens = await User.find().where('firstName').ne('Alien')
     //CREATE (two ways)
 
     // const newUser = new User({ 
@@ -56,7 +56,7 @@ async function connnectDb() {
     //=====================Create a new Collection(table) in currend DB=============================
     await Admin.create({ adminName: 'Svetoslav', adminAdress: 'Lulin 80' })
 
-    
+
 
 
 
@@ -68,9 +68,7 @@ async function connnectDb() {
     //virtual property defind into the model
     //=> users.forEach(user => console.log(user.info))
 
-
     console.log()
-
 }
 
 connnectDb()
