@@ -9,6 +9,7 @@ exports.getAll = async (search, from, to) => {
     const cubes = await Cube.find().lean()
     let result = cubes.slice()
     
+    //TODO: use mongoose to filter in db
     if (search) {
         result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()))
     }
@@ -21,7 +22,7 @@ exports.getAll = async (search, from, to) => {
    
     return result
 }
-exports.getOne = (cubeId) => cubes.slice().find(x => x.id === cubeId)
+exports.getOne = (cubeId) => Cube.findById(cubeId)
 
 exports.create = async (cubeData) => {
     const cube = new Cube(cubeData)

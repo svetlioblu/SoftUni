@@ -9,7 +9,6 @@ router.get('/create', (req, res) => {
     res.render('create')
 })
 
-
 //Send the data when the form is submited. The form has action /cubes/create and meth=POST
 router.post('/create', async (req, res) => {
 
@@ -21,9 +20,10 @@ router.post('/create', async (req, res) => {
     res.redirect('/')
 })
 
-router.get('/:cubeId/details', (req, res) => {
+router.get('/:cubeId/details', async (req, res) => {
     const cubeId = req.params.cubeId
-    const cube = cubeManager.getOne(cubeId)
+    
+    const cube = await cubeManager.getOne(cubeId).lean()
     if (!cube) {
         return res.redirect('/404')
     }

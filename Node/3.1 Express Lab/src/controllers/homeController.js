@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     const { search, from, to } = req.query
 
     const cubes = await cubeManager.getAll(search, from, to)
-    console.log(cubes)
+   
     res.render('home', { cubes, search, from, to })
 })
 
