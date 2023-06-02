@@ -7,7 +7,7 @@ const Cube = require('../models/Cube')
 //named export
 exports.getAll = async (search, from, to) => {
     const cubes = await Cube.find().lean()
-    let result = cubes.slice()
+    let result = cubes.slice()  
     
     //TODO: use mongoose to filter in db
     if (search) {
