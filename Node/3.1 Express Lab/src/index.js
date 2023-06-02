@@ -1,8 +1,6 @@
 const express = require('express')
 const app = express()
 
-
-
 const expressConfig = require('./config/expressConfig')
 const handlebarsConfig = require('./config/handlebarsConfig')
 const dbConnect = require('./config/dbConfig')
