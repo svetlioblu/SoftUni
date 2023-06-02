@@ -1,22 +1,25 @@
 const express = require('express')
 const app = express()
 
-
 const expressConfig = require('./config/expressConfig')
 const handlebarsConfig = require('./config/handlebarsConfig')
+const dbConnect = require('./config/dbConfig')
+
 const router = require('./routs')
-
-
 const PORT = 5000
 
-//express config
-expressConfig(app)
+//async will connecting to DB till do the code below db
+dbConnect()
+.then(()=>console.log('DB connected successfully '))
+.catch(err => console.log('DB Error: ', err))
 
-//config handlebars
-handlebarsConfig(app)
+  //express config
+  expressConfig(app)
 
-//Routes (Modular Routes)
-app.use(router)
+  //config handlebars
+  handlebarsConfig(app)
 
+  //Routes (Modular Routes)
+  app.use(router)
 
-app.listen(PORT, () => { console.log(`Server listening on port ${PORT}...`) })
+  app.listen(PORT, () => { console.log(`Server listening on port ${PORT}...`) })
