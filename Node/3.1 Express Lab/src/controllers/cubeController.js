@@ -40,4 +40,15 @@ router.get('/:cubeId/attach-accessory', async (req, res) => {
     res.render('accessory/attach', { cube, accessories, hasAccsseories })
 })
 
+router.post('/:cubeId/attach-accessory', async (req, res) => {
+    //taking the name attribute comming from the select in attach.hbs
+    //that wy will retutn the accessory comming fro mthe form
+    const { accessory } = req.body
+    const cubeId = req.params.cubeId
+    
+    await cubeManager.attachAccessory(cubeId, accessory)
+
+    res.redirect(`/cubes/${cubeId}/details`)
+})
+
 module.exports = router

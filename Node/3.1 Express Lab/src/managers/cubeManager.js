@@ -7,8 +7,8 @@ const Cube = require('../models/Cube')
 //named export
 exports.getAll = async (search, from, to) => {
     const cubes = await Cube.find().lean()
-    let result = cubes.slice()  
-    
+    let result = cubes.slice()
+
     //TODO: use mongoose to filter in db
     if (search) {
         result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()))
@@ -19,7 +19,7 @@ exports.getAll = async (search, from, to) => {
     if (to) {
         result = result.filter(cube => cube.difficultyLevel <= Number(to))
     }
-   
+
     return result
 }
 exports.getOne = (cubeId) => Cube.findById(cubeId)
@@ -28,4 +28,11 @@ exports.create = async (cubeData) => {
     const cube = new Cube(cubeData)
     await cube.save()
     return cube
+}
+
+exports.attachAccessory = async (cubeId, accessoryId) => {
+    const cube = await Cube.findById(cubeId)
+    cube.accessories.push(accessoryId)
+
+    return cube.save()
 }
