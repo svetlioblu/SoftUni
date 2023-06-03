@@ -24,6 +24,8 @@ router.post('/create', async (req, res) => {
 router.get('/:cubeId/details', async (req, res) => {
 
     const cube = await cubeManager.getOne(req.params.cubeId).lean()
+    const cubeAccessories = cube.accessories
+
     if (!cube) {
         return res.redirect('/404')
     }
@@ -45,7 +47,7 @@ router.post('/:cubeId/attach-accessory', async (req, res) => {
     //that wy will retutn the accessory comming fro mthe form
     const { accessory } = req.body
     const cubeId = req.params.cubeId
-    
+
     await cubeManager.attachAccessory(cubeId, accessory)
 
     res.redirect(`/cubes/${cubeId}/details`)

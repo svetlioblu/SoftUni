@@ -22,7 +22,8 @@ exports.getAll = async (search, from, to) => {
 
     return result
 }
-exports.getOne = (cubeId) => Cube.findById(cubeId)
+// populate take all th ecube with his linked accessories
+exports.getOne = (cubeId) => Cube.findById(cubeId).populate('accessories')
 
 exports.create = async (cubeData) => {
     const cube = new Cube(cubeData)
