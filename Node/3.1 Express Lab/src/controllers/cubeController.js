@@ -35,7 +35,7 @@ router.get('/:cubeId/details', async (req, res) => {
 // cubeAttachController details page
 router.get('/:cubeId/attach-accessory', async (req, res) => {
     const cube = await cubeManager.getOne(req.params.cubeId).lean()
-    console.log(cube.accessories)
+ 
     const accessories = await accessoryManager.getAvailable(cube.accessories).lean()
 
     const hasAccsseories = accessories.length > 0
