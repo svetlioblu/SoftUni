@@ -7,14 +7,20 @@ app.use(cookieParser())
 
 app.get('/', (req, res) => {
     let id = uuid()
+    const session = {}
 
     const userId = req.cookies['userId']
+
     if (userId) {
         id = userId
     } else {
-        res.cookie('userId', id)
+        //session is info stored into the server memmory, not retun to the client there npm
+        session[id] = {
+            secret: 'mySecret'
+        }
+        // creates cookie if no such
+        res.cookie('userId', id, { httpOnly: true })
     }
-
     res.send('holla  ' + id)
 })
 app.listen(5000, () => { console.log('Server listening on Port 5000...') })

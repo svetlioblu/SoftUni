@@ -8,3 +8,4 @@ npm i uniqid
 npm i mongodb   (DB driver)
 npm i mongoose (no driver required)
 npm i cookie-parser
+npm i express-session
