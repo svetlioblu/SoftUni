@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
+
 const { v4: uuid } = require('uuid')
 const cookieParser = require('cookie-parser')
+
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 //use middleware
 app.use(cookieParser())
@@ -12,7 +15,14 @@ const users = {}
 
 app.get('/', (req, res) => {
     console.log(users)
-    res.send('ok')
+    // jwt consists of 3 parts
+    const payload = { id: uuid(), username: 'Pesho' }
+    const options = { expiresIn: '2d' }
+    const secret = 'mySuperPrivateSecret'
+
+    const token = jwt.sign(payload, secret, options)
+
+    res.send(token)
 })
 
 app.get('/register', (req, res) => {
