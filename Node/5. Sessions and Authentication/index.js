@@ -5,7 +5,7 @@ const { v4: uuid } = require('uuid')
 const cookieParser = require('cookie-parser')
 
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const jwt = require('./lib/jwt')
 
 //use middleware
 app.use(cookieParser())
@@ -62,37 +62,37 @@ app.post('/login', async (req, res) => {
     const isValid = await bcrypt.compare(password, hash)
 
     if (isValid) {
-        //generate jwt
-        const payload = { userName }
-        jwt.sign(payload, secret, { expiresIn: '2d' }, (err, token) => {
-            if (err) {
-                return res.redirect('404')
-            }
+        //generate jwt.jwt is callbach based for that converted it with util in jwt module
+        try {
+            const payload = { userName }
+            const token = await jwt.sign(payload, secret, { expiresIn: '2d' })
             //set jwt as cookie
             res.cookie('token', token)
             res.redirect('/profile')
-        })
-
-
+        } catch (err) {
+            console.log(err);
+            res.redirect('/404')
+        }
     } else {
-        res.status(401).send('the password is not correct Unauthorized ')
+        res.status(401).send('The password is not correct Unauthorized ')
     }
 
 })
-app.get('/profile', (req, res) => {
+app.get('/profile', async (req, res) => {
     //get token from cookie
     const token = req.cookies['token']
     //verify token
     if (token) {
-        jwt.verify(token, secret, (err, payload) => {
-            if (err) {
-                return res.status(401).send('unauthorised')
-            }
-            return res.send('Profile: ' + payload.userName)
+        try {
+            const payload = await jwt.verify(token, secret)
+            res.send('Profile: ' + payload.userName)
+        } catch (err) {
+            res.status(401).send('unauthorised')
+        }
 
-        })
+    } else {
+        return res.redirect('/login')
     }
-    return res.redirect('/login')
 
 })
 
