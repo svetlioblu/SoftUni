@@ -11,3 +11,5 @@ npm i mongoose (no driver required)
 npm i cookie-parser
 npm i express-session
 npm i bcrypt
+
+jwt secret => node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
