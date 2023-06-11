@@ -16,7 +16,17 @@ app.get('/', (req, res) => {
 </form>`)
 })
 app.post('/', (req, res) => {
+    const { name, age } = req.body
+    //sample validation in the endpoint
+    if (!name || name.length <= 3) {
+       return res.send('Invalid username')
+    }
+    if (!age || age < 0) {
+        return res.send('Invalid age') 
+    }
 
+        console.log(name, age)
+    res.send('Succsseeded')
 })
 
 
