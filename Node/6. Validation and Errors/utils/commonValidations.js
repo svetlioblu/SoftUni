@@ -1,10 +1,6 @@
-exports.isNameValid = (res, name) => {
-    if (!name || name.length <= 3) {
-        return res.send('Invalid username')
-    }
+exports.isNameValid = (name) => {
+    return name && name.length >= 3
 }
-exports.isAgeValid = (res, age) => {
-    if (!age || age < 0 || age > 120) {
-        return res.send('Invalid age')
-    }
+exports.isAgeValid = (age) => {
+    return age && age >= 0 && age <= 120
 }

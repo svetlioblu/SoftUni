@@ -3,6 +3,7 @@ const app = express()
 app.use(express.urlencoded({ extended: false }))
 
 const { isAgeValid, isNameValid } = require('./utils/commonValidations')
+const { validateName } = require('./middlewears/middlewears')
 
 app.get('/', (req, res) => {
 
@@ -17,13 +18,13 @@ app.get('/', (req, res) => {
 
 </form>`)
 })
-app.post('/', (req, res) => {
-    const { name, age } = req.body
+//using middlewear
+app.post('/', validateName, (req, res) => {
+    const { age, name } = req.body
     //sample validation in the endpoint
-    isNameValid(res,name)
-    isAgeValid(res,age)
-
-    console.log(name, age)
+    if (!isAgeValid(age)) {
+        return res.send('Invalid age')
+    }
     res.send('Succsseeded')
 })
 
