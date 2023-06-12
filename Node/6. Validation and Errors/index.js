@@ -5,6 +5,8 @@ app.use(express.urlencoded({ extended: false }))
 const { isAgeValid, isNameValid } = require('./utils/commonValidations')
 const { validateName } = require('./middlewears/middlewears')
 
+const validator = require('validator')
+
 app.get('/', (req, res) => {
 
     res.send(`<form method="POST">
@@ -14,16 +16,23 @@ app.get('/', (req, res) => {
     <label for="age">Age</label>
     <input type="number" name="age" id="age">
 
+    <label for="password">Password</label>
+    <input type="text" name="password" id="password">
+
     <input type="submit" value="submit">
 
 </form>`)
 })
-//using middlewear
+//4 custom validations (write in the action, Export as util, middlewear, ext. libraries like validator)
 app.post('/', validateName, (req, res) => {
-    const { age, name } = req.body
+    const { age, name, password } = req.body
     //sample validation in the endpoint
     if (!isAgeValid(age)) {
         return res.send('Invalid age')
+    }
+    // npm validator
+    if (!validator.isStrongPassword(password)) {
+        return res.send('Weak Password!')
     }
     res.send('Succsseeded')
 })
