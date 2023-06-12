@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 app.use(express.urlencoded({ extended: false }))
 
+const { isAgeValid, isNameValid } = require('./utils/commonValidations')
+
 app.get('/', (req, res) => {
 
     res.send(`<form method="POST">
@@ -18,14 +20,10 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const { name, age } = req.body
     //sample validation in the endpoint
-    if (!name || name.length <= 3) {
-       return res.send('Invalid username')
-    }
-    if (!age || age < 0) {
-        return res.send('Invalid age') 
-    }
+    isNameValid(res,name)
+    isAgeValid(res,age)
 
-        console.log(name, age)
+    console.log(name, age)
     res.send('Succsseeded')
 })
 
