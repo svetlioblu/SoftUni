@@ -5,11 +5,13 @@ npm i express
 npm i express-handlebars
 npm i uniqid
 
-npm i mongodb   (DB driver)
+npm i mongodb   (-DB driver)
 npm i mongoose (no driver required)
 
+npm i bcrypt
+npm i jsonwebtoken
 npm i cookie-parser
 npm i express-session
-npm i bcrypt
+
 
 jwt secret => node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
