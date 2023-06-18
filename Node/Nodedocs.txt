@@ -11,7 +11,17 @@ npm i mongoose (no driver required)
 npm i bcrypt
 npm i jsonwebtoken
 npm i cookie-parser
-npm i express-session
+
 
 
 jwt secret => node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+!Template process:
+1.chenge project name in packages JSONs and the workspace
+2.changee launch.json path
+3.check app.listen(5000, in index. js if need to change the port 
+4.change mongoose.connect('mongodb://127.0.0.1:27017/petstagram') index.js
+5. Copy the static files in assets
+6 Set the main layout page and fix the static assets links into
+7.Addapt the User Model based on the register page fields
+

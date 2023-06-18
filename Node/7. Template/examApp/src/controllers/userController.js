@@ -20,6 +20,7 @@ router.post('/login', async (req, res) => {
 })
 
 
+// Register
 router.get('/register', (req, res) => {
     res.render('users/register')
 })
@@ -27,6 +28,7 @@ router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body
     try {
         const token = await userService.register({ username, email, password, repeatPassword })
+        //automatic login on register
         res.cookie('auth', token, { httpOnly: true })
         res.redirect('/')
 

@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 // available across the app
 const cookieParser = require('cookie-parser')
 const { auth } = require('./middlewears/authMiddlewear')
-//const { errorHandler } = require('./middlewears/errorHandlerMiddlewear')
 
 const routes = require('./routes')
 
@@ -30,7 +29,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser()) //! auth after cookie-parser
 app.use(auth)
 app.use(routes)
-//app.use(errorHandler)
 
 
 app.listen(5000, () => { console.log('The server listening on port 5000...') })

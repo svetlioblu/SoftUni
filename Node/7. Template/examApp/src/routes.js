@@ -7,8 +7,10 @@ const userController = require('./controllers/userController')
 
 router.use(homeController)
 router.use('/users', userController)
-router.get('*', (req, res) => {
-    res.redirect('/404')
-})
+
+// Use if need any non existing url path to lead 404
+// router.get('*', (req, res) => {
+//     res.redirect('/404')
+// })
 
 module.exports = router
