@@ -12,6 +12,8 @@ npm i bcrypt
 npm i jsonwebtoken
 npm i cookie-parser
 
+RESTful
+npm i CORS
 
 
 jwt secret => node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
