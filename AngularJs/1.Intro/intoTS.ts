@@ -1,5 +1,7 @@
 //predefine variables
 let isEven: boolean = false
+let num: number = 5
+let str: string = 'test'
 
 type User = {
     name: string;
@@ -13,10 +15,11 @@ interface AnotherUser {
 }
 // use predifined variables
 
-const pesho = {
+const pesho: User = {
     name: "pesho",
     age: 3,
-} as User
+    f: 3
+}
 
 
 const anotherUserList = [
@@ -31,3 +34,43 @@ class AnotherUserClass implements AnotherUser {
         return this.firstName
     }
 }
+// Inheritance
+class Human {
+    speak() {
+        console.log('hello')
+    }
+}
+class Person extends Human {
+    //no reacheble
+    private name: string
+    public age: number
+
+    constructor(name: string, age: number) {
+        super()
+        this.name = name;
+        this.age = age;
+    }
+}
+const user = new Person('ivan', 30)
+console.log(user.age);
+//Generics
+
+function getIdentity<T>(id: T) {
+    console.log(id)
+}
+getIdentity<string>('123')
+getIdentity<number>(123)
+
+//Enums
+
+enum PaymentStatus {
+    Failed,
+    Successful,
+    Pending
+}
+let x
+if (x === PaymentStatus.Pending) {
+    //TODO
+}
+
+//Modules

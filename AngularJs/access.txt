@@ -1,1 +1,7 @@
+Transpilation in console: tsc file.ts
 npm i -g typescript
+
+npm install -g @angular/cli
+ng new myDemoApp
+ng serve (open server on port 4200)
+
