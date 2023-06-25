@@ -1,4 +1,5 @@
-<app-navigation />
+<!-- props -->
+<app-navigation [titleFromApp]="title" (onChildOutput)="onOutputFromChild()" />
 <span>{{ title }}</span>
 <hr />
 <app-home />

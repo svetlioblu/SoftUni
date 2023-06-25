@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'App component';
+  
+  onOutputFromChild(){
+console.log('onOutputFromChild');
+  }
 }

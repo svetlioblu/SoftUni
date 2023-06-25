@@ -1,12 +1,25 @@
 <div id="nav">
+    <h2 [style.color]="'orange'">{{titleFromApp}}</h2>
+  <!--todo if directive to show hide content -->
   <div *ngIf="isActive">
     <ul>
-      <li *ngFor="let user of activeUsers">{{ user.name + " " + user.age }}</li>
+      <!--todo dynamic list using for directive -->
+      <li *ngFor="let user of activeUsers">
+        <!-- <span [class.green]="user.age % 2 == 0" [class.red]="user.age % 2 != 0"> -->
+        <span [style.color]="user.age % 2 == 0?'red':'green'">
+          {{ user.name + " " + user.age }}
+        </span>
+      </li>
     </ul>
   </div>
+  <!--todo inserting dynamic atribute -->
+  <input type="text" name="" id="" [value]="inputValue" />
+
+  <!--todo else implementation -->
   <span *ngIf="!isActive">Nothing is active</span>
 
-  <button (click)="handleClick()">
-    {{ isActive ? "Disctivate" : "Activate" }}
+  <button (click)="handleClick($event, 100, 1200)">
+    {{ isActive ? "Disactivate" : "Activate" }}
   </button>
+  
 </div>
