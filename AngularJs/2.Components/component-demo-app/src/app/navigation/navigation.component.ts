@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
   title = 'hide';
-  toggle = false;
+  isActive = false;
 
   handleClick() {
-    this.toggle = !this.toggle;
+    this.isActive = !this.isActive;
   }
 }

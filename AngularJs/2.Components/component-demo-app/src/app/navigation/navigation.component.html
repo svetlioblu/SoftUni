@@ -1,4 +1,16 @@
 <div id="nav">
-    <span *ngIf="toggle">{{title}}</span>
-    <button (click)="handleClick()">Click me</button>
+  <span *ngIf="isActive">
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+    </ul>
+  </span>
+  <span *ngIf="!isActive">Nothing is active</span>
+  <!-- <span>{{ isActive ? "Show" : "Hide" }}</span> -->
+
+  <button (click)="handleClick()">
+    {{ isActive ? "Disctivate" : "Activate" }}
+  </button>
+  
 </div>
