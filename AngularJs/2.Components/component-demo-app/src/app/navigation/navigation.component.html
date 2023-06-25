@@ -1,16 +1,12 @@
 <div id="nav">
-  <span *ngIf="isActive">
+  <div *ngIf="isActive">
     <ul>
-      <li>item 1</li>
-      <li>item 2</li>
-      <li>item 3</li>
+      <li *ngFor="let user of activeUsers">{{ user.name + " " + user.age }}</li>
     </ul>
-  </span>
+  </div>
   <span *ngIf="!isActive">Nothing is active</span>
-  <!-- <span>{{ isActive ? "Show" : "Hide" }}</span> -->
 
   <button (click)="handleClick()">
     {{ isActive ? "Disctivate" : "Activate" }}
   </button>
-  
 </div>

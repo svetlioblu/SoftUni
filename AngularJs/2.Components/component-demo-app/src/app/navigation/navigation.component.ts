@@ -8,8 +8,14 @@ import { Component } from '@angular/core';
 export class NavigationComponent {
   title = 'hide';
   isActive = false;
-
-  handleClick() {
+  activeUsers = [
+    { name: 'Mitko', age: 21 },
+    { name: 'Ivan', age: 23 },
+    { name: 'Toni', age: 33 },
+    { name: 'Goro', age: 62 },
+  ];
+    
+  handleClick(): void {
     this.isActive = !this.isActive;
   }
 }
