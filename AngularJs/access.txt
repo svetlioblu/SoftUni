@@ -5,3 +5,6 @@ npm install -g @angular/cli
 ng new myDemoApp
 ng serve (open server on port 4200)
 
+\\\\\\\\\
+ng generate component home = create component with tests
+
