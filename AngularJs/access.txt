@@ -8,3 +8,4 @@ ng serve (open server on port 4200)
 \\\\\\\\\
 ng generate component home = create component with tests
 
+ng generate component --skip-tests=true navigation => create components without tests 
