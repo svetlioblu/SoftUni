@@ -1,4 +1,4 @@
 export interface ItemModel {
-  owner: string;
+  // owner: string;
   label: string;
 }
