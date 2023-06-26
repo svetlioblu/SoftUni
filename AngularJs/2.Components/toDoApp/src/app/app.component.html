@@ -1,6 +1,7 @@
 <div id="myDIV" class="header">
     <h2>My To Do List</h2>
-    <input type="text" id="myInput"  #textInput placeholder="Title...">
+    <input type="text" id="myInput" #textInput placeholder="Title..." required>
     <span (click)="newElement()" class="addBtn">Add</span>
   </div>
+<div id="error" *ngIf="isValidInput"> Input at least 2 chars long task!</div>
   <app-list/>

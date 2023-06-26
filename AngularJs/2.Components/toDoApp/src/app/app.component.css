@@ -1,9 +1,9 @@
 .header {
-  background-color:burlywood;
+  background-color: burlywood;
   padding: 30px 40px;
   color: white;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 /* Clear floats after the header */
@@ -40,4 +40,10 @@ input {
 
 .addBtn:hover {
   background-color: #bbb;
+}
+#error {
+  border: 1px solid darkred;
+  background: salmon;
+  font-size: 18px;
+  text-align: center;
 }
