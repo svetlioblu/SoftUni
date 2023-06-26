@@ -6,12 +6,19 @@ import { db } from './data/tasks';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  isValidInput: boolean = false;
   @ViewChild('textInput', { static: false })
   textInput!: ElementRef<HTMLInputElement>;
 
   newElement(): void {
     const inputTaskValue = this.textInput.nativeElement.value;
-    db.push({ label: inputTaskValue });
-    this.textInput.nativeElement.value = '';
+    if (inputTaskValue.length >= 2) {
+      this.isValidInput = false;
+      db.push({ label: inputTaskValue });
+      this.textInput.nativeElement.value = '';
+    } else {
+      this.isValidInput = true;
+      return;
+    }
   }
 }
