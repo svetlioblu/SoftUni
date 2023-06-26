@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import{}
+import { Component} from '@angular/core';
+import { ItemModel } from '../models/item.model';
 
 @Component({
   selector: 'app-item',
@@ -7,5 +7,5 @@ import{}
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent {
-  @Input('myStringForItem') myItem: string = '';
+  
 }

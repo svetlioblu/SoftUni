@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-  myString: string = 'This is created in list>';
+  
 }

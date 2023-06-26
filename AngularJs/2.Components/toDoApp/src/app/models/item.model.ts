@@ -1,4 +1,4 @@
-export interface Itemmodel {
-  name: string;
-  description: string;
+export interface ItemModel {
+  owner: string;
+  label: string;
 }
