@@ -7,5 +7,5 @@ import { ItemModel } from '../models/item.model';
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent {
-  @Input() label: unknown;
+  @Input() label: string = '';
 }
