@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ItemModel } from '../models/item.model';
 
 @Component({
@@ -7,5 +7,5 @@ import { ItemModel } from '../models/item.model';
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent {
-  
+  @Input() label: unknown;
 }

@@ -1,5 +1,7 @@
 /* Style the list items */
-li {
+
+.endItem {
+  display: block;
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
@@ -16,24 +18,24 @@ li {
   }
   
   /* Set all odd list items to a different color (zebra-stripes) */
-  li:nth-child(odd) {
+  .endItem:nth-child(odd) {
     background: #f9f9f9;
   }
   
   /* Darker background-color on hover */
-  li:hover {
+  .endItem:hover {
     background: #ddd;
   }
   
   /* When clicked on, add a background color and strike out text */
-  li.checked {
+  .endItem.checked {
     background: #888;
     color: #fff;
     text-decoration: line-through;
   }
   
   /* Add a "checked" mark when clicked on */
- li.checked::before {
+  .endItem.checked::before {
     content: '';
     position: absolute;
     border-color: #fff;

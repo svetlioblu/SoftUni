@@ -1,3 +1,5 @@
 <ul id="myUL">
-  <app-item />
+  <li *ngFor="let task of tasks">
+    <app-item  [label]="task.label"/>
+  </li>
 </ul>
