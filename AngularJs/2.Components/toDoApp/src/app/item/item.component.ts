@@ -8,4 +8,9 @@ import { ItemModel } from '../models/item.model';
 })
 export class ItemComponent {
   @Input() label: string = '';
+  isItemSelected: boolean = false;
+
+  lineTrough(): void {
+    this.isItemSelected =!this.isItemSelected
+  }
 }

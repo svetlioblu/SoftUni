@@ -8,5 +8,5 @@ import { ItemModel } from '../models/item.model';
 })
 export class ListComponent {
   tasks: ItemModel[] = db;
- 
+
 }

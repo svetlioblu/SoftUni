@@ -1,5 +1,9 @@
 /* Remove margins and padding from the list */
 ul {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
+
+li:nth-of-type(even){
+  border: 1px solid #e8e7e7;
+}

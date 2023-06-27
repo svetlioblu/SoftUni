@@ -6,6 +6,7 @@
     position: relative;
     padding: 12px 8px 12px 40px;
     background: #eee;
+    
     font-size: 18px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     transition: 0.2s;
@@ -16,12 +17,7 @@
     -ms-user-select: none;
     user-select: none;
   }
-  
-  /* Set all odd list items to a different color (zebra-stripes) */
-  .endItem:nth-child(odd) {
-    background: #f9f9f9;
-  }
-  
+ 
   /* Darker background-color on hover */
   .endItem:hover {
     background: #ddd;
@@ -32,20 +28,6 @@
     background: #888;
     color: #fff;
     text-decoration: line-through;
-  }
-  
-  /* Add a "checked" mark when clicked on */
-  .endItem.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
   }
   
   /* Style the close button */
