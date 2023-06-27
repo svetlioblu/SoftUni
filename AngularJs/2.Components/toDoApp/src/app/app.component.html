@@ -4,4 +4,4 @@
     <span (click)="newElement()" class="addBtn">Add</span>
   </div>
 <div id="error" *ngIf="isValidInput"> Input at least 2 chars long task!</div>
-  <app-list/>
+  <app-list [tasks]="tasks" (onRemoveClick)="handleRemove($event)"/>

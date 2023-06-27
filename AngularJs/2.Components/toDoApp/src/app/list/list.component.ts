@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { db } from '../data/tasks';
 import { ItemModel } from '../models/item.model';
 @Component({
@@ -7,9 +7,11 @@ import { ItemModel } from '../models/item.model';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-  tasks: ItemModel[] = db;
+  @Input() tasks: ItemModel[] = [];
+  
+  @Output() onRemoveClick: EventEmitter<string> = new EventEmitter();
 
   handleRemoveEvent(clickedItemLabel: string): void {
-    this.tasks = this.tasks.filter((x) => x.label !== clickedItemLabel);
+    this.onRemoveClick.emit(clickedItemLabel);
   }
 }
