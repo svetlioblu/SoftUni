@@ -1,5 +1,5 @@
 <ul id="myUL">
   <li *ngFor="let task of tasks">
-    <app-item  [label]="task.label"/>
+    <app-item  [label]="task.label" (onRemoveClick)="handleRemoveEvent($event)"/>
   </li>
 </ul>

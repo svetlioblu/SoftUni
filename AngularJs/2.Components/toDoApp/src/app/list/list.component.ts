@@ -9,4 +9,7 @@ import { ItemModel } from '../models/item.model';
 export class ListComponent {
   tasks: ItemModel[] = db;
 
+  handleRemoveEvent(clickedItemLabel: string): void {
+    this.tasks = this.tasks.filter((x) => x.label !== clickedItemLabel);
+  }
 }
