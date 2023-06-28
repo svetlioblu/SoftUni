@@ -1,7 +1,21 @@
 <div id="myDIV" class="header">
-    <h2>My To Do List</h2>
-    <input type="text" id="myInput" #textInput placeholder="Title..." required>
-    <span (click)="newElement()" class="addBtn">Add</span>
-  </div>
-<div id="error" *ngIf="isValidInput"> Input at least 2 chars long task!</div>
-  <app-list [tasks]="tasks" (onRemoveClick)="handleRemove($event)"/>
+  <h2>My To Do List</h2>
+  <input type="text" id="myInput" #textInput placeholder="Title..." required />
+  <span (click)="newElement()" class="addBtn">Add</span>
+</div>
+<div class="error" *ngIf="isInvalidInput">
+  <p>Type at least 2 chars long task!</p>
+</div>
+<div class="error" *ngIf="isDuplicatedInput"><p>task already exists!</p></div>
+<div class="noTasks" *ngIf="isTasksEmpty">
+  <span style="--i: 1">N</span>
+  <span style="--i: 2">o</span>
+  &nbsp;
+  <span style="--i: 3">t</span>
+  <span style="--i: 4">a</span>
+  <span style="--i: 5">s</span>
+  <span style="--i: 6">k</span>
+  <span style="--i: 7">s</span>
+</div>
+
+<app-list [tasks]="tasks" (onRemoveClick)="handleRemove($event)" />

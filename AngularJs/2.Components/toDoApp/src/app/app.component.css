@@ -41,9 +41,29 @@ input {
 .addBtn:hover {
   background-color: #bbb;
 }
-#error {
+.error {
   border: 1px solid darkred;
   background: salmon;
   font-size: 18px;
   text-align: center;
+}
+/* No tasks */
+.noTasks {
+  position: relative;
+  text-align: center;
+  background-color: #e1a351;
+}
+.noTasks span {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color:#f9f6f6;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
 }

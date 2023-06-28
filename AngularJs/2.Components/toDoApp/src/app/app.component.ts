@@ -7,25 +7,33 @@ import { ItemModel } from './models/item.model';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  isValidInput: boolean = false;
+  isInvalidInput: boolean = false;
+  isDuplicatedInput: boolean = false;
+
   tasks: ItemModel[] = db.slice();
-  @ViewChild('textInput', { static: false })
+  @ViewChild('textInput')
   textInput!: ElementRef<HTMLInputElement>;
+
+
+  get isTasksEmpty(): boolean {
+    return this.tasks.length === 0;
+  }
 
   newElement(): void {
     const inputTaskValue = this.textInput.nativeElement.value;
-    if (inputTaskValue.length >= 2) {
-      this.isValidInput = false;
-      this.tasks.push({ label: inputTaskValue });
+    if (this.tasks.find((x) => x.label.trim() == inputTaskValue.trim())) {
+      this.isDuplicatedInput = true;
+    } else if (inputTaskValue.length >= 2) {
+      this.isInvalidInput = false;
+      this.isDuplicatedInput = false;
 
+      this.tasks.push({ label: inputTaskValue });
       this.textInput.nativeElement.value = '';
     } else {
-      this.isValidInput = true;
-      return;
+      this.isInvalidInput = true;
     }
   }
   handleRemove(removeItem: string) {
     this.tasks = this.tasks.filter((x) => x.label !== removeItem);
   }
-  
 }
