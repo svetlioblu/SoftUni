@@ -8,6 +8,9 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   title = 'RxDemoApp';
-//injection from the service
-  constructor(public userService:UserService) {}
+  appUsers:any = [];
+  //injection from the service
+  constructor(public userService: UserService) {
+    this.appUsers = this.userService.user;
+  }
 }
