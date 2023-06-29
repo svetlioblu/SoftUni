@@ -9,11 +9,10 @@ import { ItemModel } from './models/item.model';
 export class AppComponent {
   isInvalidInput: boolean = false;
   isDuplicatedInput: boolean = false;
-
   tasks: ItemModel[] = db.slice();
+
   @ViewChild('textInput')
   textInput!: ElementRef<HTMLInputElement>;
-
 
   get isTasksEmpty(): boolean {
     return this.tasks.length === 0;
