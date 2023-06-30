@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  // can add service 3 ways into the componend, app.module.ts, the service provideIn
 })
 export class AppComponent {
   title = 'RxDemoApp';
@@ -14,11 +15,23 @@ export class AppComponent {
   constructor(public userService: UserService) {
     this.appUsers = this.userService.user;
 
-    // async analogy Observe
-    const o = new Observable((observer) => {
-      observer.next(100);
-      observer.next(500);
-    });
-    o.subscribe((data) => console.log(data));
+    function interval(intervalValue: number) {
+      // async analogy Observe
+      return new Observable((observer) => {
+        // observer.next(100);
+        // observer.next(500);
+        let counter = 0;
+        const timerInterval = setInterval(() => {
+          observer.next(counter++);
+        }, intervalValue);
+
+        //this is invoked on destroy
+        return () => {
+          clearInterval(timerInterval);
+        };
+      });
+    }
+
+    interval(2000).subscribe((data) => console.log(data));
   }
 }
