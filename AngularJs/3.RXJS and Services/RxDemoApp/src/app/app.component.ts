@@ -32,8 +32,9 @@ export class AppComponent {
       });
     }
     // can subscribe for the data here several ways. Use stream$ as practice
+    // the async proces scontinues on the bacground if we not subscribe 
     //interval(3000).subscribe((data) => console.log(data));
-    const stream$ = interval(3000).pipe(map((x) => x * 2));
+    const stream$ = interval(3000).pipe(map((x) => x *2));
     stream$.subscribe({
       next: (x) => console.log('data =' + x),
       error: (err) => console.log('Error occured ' + err),
