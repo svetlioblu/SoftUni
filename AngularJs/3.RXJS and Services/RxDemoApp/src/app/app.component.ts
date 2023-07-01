@@ -45,12 +45,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers().then((users) => {
+    //todo consume promise
+    // this.userService.getUsers().then((users) => {
+    //   this.fetchUsers = users;
+    //   this.isLoading = false
+    // });
+    //todo consume observable
+    this.userService.getUsers().subscribe((users) => {
       this.fetchUsers = users;
       this.isLoading = false
-      console.log(users);
-      
     });
-    // console.log(this.fetchUsers);
   }
 }
