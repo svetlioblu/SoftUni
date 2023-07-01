@@ -1,5 +1,12 @@
+<h2>Hardcoded users from service</h2>
 <ul>
-  <li>{{appUsers[1].name}}</li>
-  <li>{{userService.user[0].age}}</li>
-  <li></li>
+  <li>{{ appUsers[1].name }}</li>
+  <li>{{ userService.user[0].age }}</li>
+</ul>
+<h2>Fetched users from service</h2>
+<div *ngIf="isLoading"><span>Loading..</span></div>
+<ul>
+  <li *ngFor="let user of fetchUsers">
+    <app-fetched-users [user]="user" />
+  </li>
 </ul>

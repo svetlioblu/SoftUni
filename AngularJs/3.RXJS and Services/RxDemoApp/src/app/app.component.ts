@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import { Observable, map } from 'rxjs';
 
@@ -8,10 +8,12 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./app.component.css'],
   // can add service 3 ways into the componend, app.module.ts, the service provideIn
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'RxDemoApp';
   appUsers: any = [];
-  //injection from the user.service
+  fetchUsers: any = [];
+  isLoading:boolean = true;
+  //todo injection from the user.service
   constructor(public userService: UserService) {
     this.appUsers = this.userService.user;
 
@@ -25,20 +27,30 @@ export class AppComponent {
           observer.next(counter++);
         }, intervalValue);
 
-        //this is invoked on destroy
+        //todo this is invoked on destroy. cannot be achieved with promise
         return () => {
           clearInterval(timerInterval);
         };
       });
     }
     // can subscribe for the data here several ways. Use stream$ as practice
-    // the async proces scontinues on the bacground if we not subscribe 
     //interval(3000).subscribe((data) => console.log(data));
-    const stream$ = interval(3000).pipe(map((x) => x *2));
-    stream$.subscribe({
-      next: (x) => console.log('data =' + x),
-      error: (err) => console.log('Error occured ' + err),
-      complete: () => console.log('Stream has compleated'),
+    const stream$ = interval(3000).pipe(map((x) => x * 2));
+    //todo: the observers data is trigered on subscribe
+    // stream$.subscribe({
+    //   next: (x) => console.log('data =' + x),
+    //   error: (err) => console.log('Error occured ' + err),
+    //   complete: () => console.log('Stream has compleated'),
+    // });
+  }
+
+  ngOnInit() {
+    this.userService.getUsers().then((users) => {
+      this.fetchUsers = users;
+      this.isLoading = false
+      console.log(users);
+      
     });
+    // console.log(this.fetchUsers);
   }
 }
