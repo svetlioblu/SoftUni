@@ -1,3 +1,4 @@
+/////////////start///////////
 Transpilation in console: tsc file.ts
 npm i -g typescript
 
@@ -5,9 +6,21 @@ npm install -g @angular/cli
 ng new myDemoApp
 ng serve --open (open server on port 4200)
 
-\\\\\\\\\
+\\\\\\\\\modules,commponents\\\\\\\\\
+
+ng generate module core
+ng g c core/header
+
 ng generate component home = create component with tests
 
 ng generate component --skip-tests=true navigation => create components without tests 
 
 ng generate service user 
+
+/////
+ng generate environments
+
+/////add ctrl_ LMC components in tsconfig.app.json/////
+ "angularCompilerOptions": {
+    "strictTemplates": true
+  }
