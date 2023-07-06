@@ -29,4 +29,10 @@
       transform: rotate(1800deg);
     }
   }
+  .spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsla(0, 33%, 83%, 0.389);
+}
   
