@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GlobalLoaderService {
+isHidden =true
+  showLoader() {
+this.isHidden=false
+  }
 
-showLoader(){
-
-}
-
-hideLoader(){
-  
-}
+  hideLoader() {
+this.isHidden=true
+  }
 }
