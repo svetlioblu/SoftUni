@@ -18,6 +18,11 @@ export class UserListComponent implements OnInit {
 		public globalLoaderService: GlobalLoaderService) { }
 
 	ngOnInit(): void {
+		this.loadUsers()
+
+	}
+
+	loadUsers():void {
 		this.globalLoaderService.showLoader()
 		setTimeout(() => {
 			this.userService.fetchUsers().subscribe({
@@ -30,6 +35,5 @@ export class UserListComponent implements OnInit {
 			}
 			);
 		}, 1000)
-
 	}
 }
