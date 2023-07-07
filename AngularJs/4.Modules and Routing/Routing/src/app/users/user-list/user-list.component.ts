@@ -15,15 +15,21 @@ export class UserListComponent implements OnInit {
 	// 5. add constructor dependancy and onInit
 	constructor(
 		private userService: UserService,
-		private globalLoaderService: GlobalLoaderService) { }
+		public globalLoaderService: GlobalLoaderService) { }
 
 	ngOnInit(): void {
 		this.globalLoaderService.showLoader()
+		setTimeout(() => {
+			this.userService.fetchUsers().subscribe({
+				next: (users) => {
+					this.userList = users;
+					this.globalLoaderService.hideLoader()
+				},
+				error: (err) => console.log(err)
 
-		this.userService.fetchUsers().subscribe((users) => {
-			next: this.userList = users;
-		});
-		this.globalLoaderService.hideLoader()
+			}
+			);
+		}, 1000)
 
 	}
 }

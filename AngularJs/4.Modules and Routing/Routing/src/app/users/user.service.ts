@@ -8,13 +8,12 @@ import { User } from '../types/User';
 //1 OnInit
 export class UserService implements OnInit {
   // 3. add HttpClient. Import globally in app.module.ts because can need in other services
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   // 2: initiate OnInit
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   fetchUsers() {
     // 4. import in user-list.component.ts, check how there
     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
   }
-} 
- 
+}
