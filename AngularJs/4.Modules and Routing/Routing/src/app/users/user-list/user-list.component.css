@@ -3,3 +3,6 @@
     justify-content: center;
     margin: 60px;
 }
+.clickable:hover{
+    cursor: pointer;
+}
