@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
 import { TodoModule } from './todo/todo.module';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
