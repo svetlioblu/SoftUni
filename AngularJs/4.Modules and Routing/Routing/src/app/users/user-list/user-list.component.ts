@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
 
 	}
 
-	loadUsers():void {
+	loadUsers(): void {
 		this.globalLoaderService.showLoader()
 		setTimeout(() => {
 			this.userService.fetchUsers().subscribe({
