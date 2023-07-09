@@ -1,5 +1,7 @@
 <div class="user-list-wrapper">
   <ul>
-    <li *ngFor="let user of userList">{{user.username}} / {{user.id}}</li>
+    <li *ngFor="let user of userList" [routerLink]="['/user','details',user.id]">
+      {{user.id}}/ {{user.username}}
+    </li>
   </ul>
-</div>
+</div> 

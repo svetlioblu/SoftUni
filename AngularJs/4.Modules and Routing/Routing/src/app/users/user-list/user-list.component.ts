@@ -4,6 +4,7 @@ import { User } from 'src/app/types/User';
 import { UserService } from '../user.service';
 import { GlobalLoaderService } from 'src/app/core/global-loader/global-loader.service';
 
+
 @Component({
 	selector: 'app-user-list',
 	templateUrl: './user-list.component.html',
