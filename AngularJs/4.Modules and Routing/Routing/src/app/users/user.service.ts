@@ -16,4 +16,9 @@ export class UserService implements OnInit {
     // 4. import in user-list.component.ts, check how there
     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
   }
+  fetchOneUsers(id:number) {
+    // get ssingle user 
+    return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`);
+  }
+
 }
