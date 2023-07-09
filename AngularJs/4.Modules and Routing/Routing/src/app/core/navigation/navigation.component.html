@@ -1,5 +1,6 @@
 <p>navigation works!</p>
 <div>
-    <div class="nav-btn" >User List</div>
-    <div class="nav-btn">Todo List</div>
+    <!-- 3. add clicks -->
+    <div class="nav-btn" (click)="navigateTo('/user-list')" >User List</div>
+    <div class="nav-btn" (click)="navigateTo('/todo-list')">Todo List</div>
 </div>
