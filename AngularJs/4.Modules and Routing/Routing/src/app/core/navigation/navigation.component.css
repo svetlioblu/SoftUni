@@ -1,10 +1,14 @@
+
+
 .nav-btn{
-    margin:10px;
+    margin:30px;
     padding: 20px;
     border: 1px solid #000;
     border-radius: 20px;
     cursor: pointer;
     width: fit-content;
+    text-decoration: none;
+    color: black;
 }
 .nav-btn:hover{
     background: gray ;

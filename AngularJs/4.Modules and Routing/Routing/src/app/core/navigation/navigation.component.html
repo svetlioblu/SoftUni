@@ -1,6 +1,10 @@
-<p>navigation works!</p>
+<h1>Navigaion Component</h1>
 <div>
-    <!-- 3. add clicks -->
-    <div class="nav-btn" (click)="navigateTo('/user-list')" >User List</div>
-    <div class="nav-btn" (click)="navigateTo('/todo-list')">Todo List</div>
+    <!-- todo 3. add clicks -->
+    <!-- <div class="nav-btn" (click)="navigateTo('/user-list')" >User List</div>
+    <div class="nav-btn" (click)="navigateTo('/todo-list')">Todo List</div> -->
+    <!-- todo 4. or add anckors , need to include RouterModule in navigation Module-->
+    <a class="nav-btn" routerLink="user-list">Users List</a>
+    <a class="nav-btn" routerLink="todo-list">Todo List</a>
+
 </div>

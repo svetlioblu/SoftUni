@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavigationComponent {
   // 1. inject router
   constructor(private router: Router) { }
-  //2.config router, use navigateTo in btns
+  //2.config router(configured in app-routing.module), use navigateTo in btns
   navigateTo(path: string): void {
     this.router.navigate([path])
   }
