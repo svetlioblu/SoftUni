@@ -1,4 +1,5 @@
 .user-list-wrapper{
     display: flex;
     justify-content: center;
+    margin: 60px;
 }
