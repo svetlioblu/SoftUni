@@ -9,13 +9,18 @@ import { UserService } from 'src/app/users/user.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  // 1. add activeroute module and userservice
+  //todo 1. add activeRoute module and userservice
   constructor(
     private activeRoute: ActivatedRoute,
     private userService: UserService) {
-    // 2. take details param
+      
+      // takes all user beforehand
+    console.log(this.activeRoute.snapshot.data['user']);
+
+    //todo 2. take details param
     this.activeRoute.params.subscribe((v) => console.log(v))
   }
+
   ngOnInit(): void {
 
   }
