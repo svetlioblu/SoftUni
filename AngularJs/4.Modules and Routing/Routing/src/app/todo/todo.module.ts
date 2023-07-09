@@ -10,6 +10,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[TodoListComponent]
 })
 export class TodoModule { }

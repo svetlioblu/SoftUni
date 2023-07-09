@@ -7,14 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
+import { TodoModule } from './todo/todo.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
     UsersModule,
-    HttpClientModule,
+    TodoModule
   ],
   providers: [],
   bootstrap: [AppComponent],
