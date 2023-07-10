@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/users/user.service';
@@ -10,11 +11,9 @@ import { UserService } from 'src/app/users/user.service';
 export class UserDetailsComponent implements OnInit {
 
   //todo 1. add activeRoute module and userservice
-  constructor(
-    private activeRoute: ActivatedRoute,
-    private userService: UserService) {
-      
-      // takes all user beforehand
+  constructor(private activeRoute: ActivatedRoute) {
+
+    // takes all user beforehand
     console.log(this.activeRoute.snapshot.data['user']);
 
     //todo 2. take details param
