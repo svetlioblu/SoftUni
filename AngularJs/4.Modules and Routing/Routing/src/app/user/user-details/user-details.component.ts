@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/users/user.service';
 
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/users/user.service';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent{
 
   //todo 1. add activeRoute module and userservice
   constructor(private activeRoute: ActivatedRoute) {
@@ -20,7 +20,4 @@ export class UserDetailsComponent implements OnInit {
     this.activeRoute.params.subscribe((v) => console.log(v))
   }
 
-  ngOnInit(): void {
-
-  }
 }
