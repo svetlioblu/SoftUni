@@ -1,10 +1,11 @@
-import { Directive, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, OnInit, ElementRef, Renderer2, Input, } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Directive({
-  selector: '[appMyrouterlink]'
+  selector: '[appMyRouterLink]'
 })
 export class MyrouterlinkDirective implements OnInit {
+  @Input() appMyRouterLink: string = ''
 
   constructor(private elRef: ElementRef,
     private renderer: Renderer2,
@@ -16,10 +17,12 @@ export class MyrouterlinkDirective implements OnInit {
       'click',
       this.clickHandler.bind(this)
     )
+
   }
 
   clickHandler(e: MouseEvent) {
-    console.log(e);
+    console.log(this.appMyRouterLink);
+    // this.router.navigate([''])
 
   }
 }
