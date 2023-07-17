@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appHighlightOnMove]'
@@ -9,30 +9,35 @@ export class HighlightOnMoveDirective implements OnInit {
 
 
   ngOnInit(): void {
+    //  todo no correct hardcoded
     // this.elRef.nativeElement.style.backgroundColor = 'yellow'
+    // todo correct
+    //    this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'red')
 
-    this.renderer.setStyle(
-      this.elRef.nativeElement, 'background-color', 'red'
-    )
-
+    //todo listeners rendered feature
     this.renderer.listen(
       this.elRef.nativeElement,
       'mouseenter',
-      this.mouseEnterHandler
+      this.mouseEnterHandler.bind(this)
     )
     this.renderer.listen(
       this.elRef.nativeElement,
       'mouseleave',
-      this.mouseLeaveHandler
+      this.mouseLeaveHandler.bind(this)
     )
   }
   mouseEnterHandler(e: MouseEvent) {
-    console.log('enter', e);
-
+    this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'red')
+    //todo can add class
+    this.renderer.addClass(this.elRef.nativeElement, 'highlight')
   }
   mouseLeaveHandler(e: MouseEvent) {
-    console.log('leave', e);
-
+    this.renderer.setStyle(this.elRef.nativeElement, 'background-color', '')
   }
 
+  // todo hostlisteners it seems more clear
+  @HostListener('mouseover',['$event']) mouseOverHandler(e:MouseEvent) {
+    console.log(e);
+    
+  }
 }
