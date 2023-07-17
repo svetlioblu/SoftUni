@@ -22,7 +22,7 @@ export class MyrouterlinkDirective implements OnInit {
 
   clickHandler(e: MouseEvent) {
     console.log(this.appMyRouterLink);
-    // this.router.navigate([''])
+    this.router.navigate([this.appMyRouterLink])
 
   }
 }
