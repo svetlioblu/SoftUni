@@ -1,5 +1,6 @@
 import { Directive, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
 
+//todo insert into module,declarations 
 @Directive({
   selector: '[appHighlightOnMove]'
 })
@@ -36,8 +37,8 @@ export class HighlightOnMoveDirective implements OnInit {
   }
 
   // todo hostlisteners it seems more clear
-  @HostListener('mouseover',['$event']) mouseOverHandler(e:MouseEvent) {
+  @HostListener('mouseover', ['$event']) mouseOverHandler(e: MouseEvent) {
     console.log(e);
-    
+
   }
 }
