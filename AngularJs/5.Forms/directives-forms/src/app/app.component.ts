@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -6,10 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isShown: boolean = true
-  title = 'directives-forms';
-
-  toggle(): void {
-    this.isShown = !this.isShown
+  submitHandler(form: NgForm): void {
+    console.log(form.value);
+    const value: { email: string, password: string } = form.value
+    // form.reset() -> can reset values
+    //-> can set values form.setValue(
+    //   {
+    //     email: '',
+    //     password: ''
+    //   }
+    // )
+    if (form.invalid) {
+      return
+    }
   }
 }

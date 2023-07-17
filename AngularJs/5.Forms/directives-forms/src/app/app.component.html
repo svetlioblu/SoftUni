@@ -1,15 +1,16 @@
-<div appHighlightOnMove>Hi Directives</div>|
-<router-outlet />
-<hr />
-<nav>
-  <div appMyRouterLink="/login">Link to Login</div>
-  <div appMyRouterLink="/register">Link to Login</div>
-</nav>
-<hr />
+<!-- <app-directives/> -->
 
-<!-- structural directives -->
-<button (click)="toggle()">Toggle click</button>
-<div *ngIf="isShown">Simple Div 1</div>
-<hr>
-<span>Custom Structural directive</span>
-<div *appMyStructuralDirective="isShown">structural directive usage 1</div>
+<!--We have template driven and react forms -->
+<!-- Template-driven Form- add FormModule in app.module -->
+<form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)">
+  <!-- ngModel dinamicly tracks the values and provide them in the component -->
+  <div class="form-group">
+    <label for="email">email</label>
+    <input type="text" id="email" name="email" ngModel email required>
+  </div>
+  <div class="form-group">
+    <label for="password">password</label>
+    <input type="text" id="password" name="paessword" ngModel>
+  </div>
+  <button>Login</button>
+</form>

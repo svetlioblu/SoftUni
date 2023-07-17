@@ -4,7 +4,7 @@ import { Directive, Input, OnChanges, Optional, SimpleChanges, TemplateRef, View
   selector: '[appMyStructuralDirective]'
 })
 export class MyStructuralDirectiveDirective implements OnChanges {
-  // todo ngIf implements
+  // todo ngIf implementation
   @Input() appMyStructuralDirective: boolean = true
   constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef) { }
 

@@ -1,0 +1,15 @@
+<div appHighlightOnMove>Hi Directives</div>|
+<router-outlet />
+<hr />
+<nav>
+  <div appMyRouterLink="/login">Link to Login</div>
+  <div appMyRouterLink="/register">Link to Login</div>
+</nav>
+<hr />
+
+<!-- structural directives -->
+<button (click)="toggle()">Toggle click</button>
+<div *ngIf="isShown">Simple Div 1</div>
+<hr>
+<span>Custom Structural directive</span>
+<div *appMyStructuralDirective="isShown">structural directive usage 1</div>
