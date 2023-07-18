@@ -16,7 +16,12 @@
   </div>
   <div class="form-group">
     <label for="password">password</label>
-    <input type="text" id="password" name="paessword" ngModel>
+    <input type="text" id="password" name="paessword" ngModel required #passwordInput="ngModel" [appMaxCount]="4">
   </div>
+  <div *ngIf="passwordInput.errors?.['appMaxCount']">Invalid password,because length is longer than
+    {{passwordInput.errors?.['appMaxCount']}}</div>
+
+
+
   <button>Login</button>
 </form>
