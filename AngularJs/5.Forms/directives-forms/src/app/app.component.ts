@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,18 +9,22 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   @ViewChild('loginForm') loginForm: NgForm | undefined
-  // from:NgForm can be in submitHandler param instead of @ViewChild.
+  // ? prebuild reactive form
+  registerForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required, Validators.maxLength(4)]
+  })
 
-  ngOnInit(): void {
-    // will be rendered only the static content
-  
+  // ?reactivce: form inject FormBuilder
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void { }
+  // ?reactive: submit handler
+  handleReactiveFormSubmit(): void {
+
   }
 
-  // ngAfterViewInit():void {
-  // will render the final content with dynamic components
-  // }
-
-
+  //?templateDriven submit: from:NgForm can be in submitHandler param instead of @ViewChild.
   submitHandler(): void {
     if (!this.loginForm) {
       return
