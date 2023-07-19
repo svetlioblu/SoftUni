@@ -40,9 +40,10 @@
   </div>
   <div class="form-group">
     <label for="password">password</label>
-    <input type="text" id="password" name="paessword" formControlName="password">
+    <input type="text" id="password" name="password" [appMaxCount]="4" formControlName="password">
   </div>
-  <!-- <div *ngIf="passwordInput.errors?.['appMaxCount']">Invalid password,because length is longer than
-    {{passwordInput.errors?.['appMaxCount']}}</div> -->
+  <div *ngIf="registerForm.get('password')?.errors?.['appMaxCount']">Invalid password,because length is longer than
+    {{registerForm.get('password')?.errors?.['appMaxCount']}}</div>
+
   <button>Register</button>
 </form>

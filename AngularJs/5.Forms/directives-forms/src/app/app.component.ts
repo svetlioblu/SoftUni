@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   // ? prebuild reactive form
   registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required, Validators.maxLength(4)]
+    password: ['', [Validators.required, Validators.maxLength(4)]]
   })
 
   // ?reactivce: form inject FormBuilder
