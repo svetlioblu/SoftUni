@@ -1,7 +1,8 @@
 
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { Observable, tap } from 'rxjs';
 import { API_URL } from './constants';
+import { Provider } from '@angular/core';
 
 export class AppInterceptor implements HttpInterceptor {
 
@@ -20,4 +21,10 @@ export class AppInterceptor implements HttpInterceptor {
             )
         )
     }
+}
+// set Interceptor to be providable in app.module providers !
+export const appInterceptorProvider: Provider = {
+    provide: HTTP_INTERCEPTORS,
+    multi: true,
+    useClass: AppInterceptor
 }
