@@ -17,7 +17,9 @@ ng generate component --skip-tests=true navigation => create components without 
 
 ng generate service user 
 
-ng g d highlight-on-move 
+ng g d highlight-on-move
+
+ng g p reduce
 
 /////
 ng generate environments
