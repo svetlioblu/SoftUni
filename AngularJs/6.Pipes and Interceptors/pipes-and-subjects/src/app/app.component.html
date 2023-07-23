@@ -1,1 +1,8 @@
-<div>hi</div>
+<div>{{user | json}}</div>
+<hr>
+<h3>Sum of list</h3>
+<div>{{user.list | reduce : sum : 0}}</div>
+<hr>
+<button (click)="addProperty()">Add Property</button>
+<hr>
+<div>{{p | async}}</div>
