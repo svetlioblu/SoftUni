@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ReducePipe } from './reduce.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReducePipe
+    ReducePipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
