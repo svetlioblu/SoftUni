@@ -19,7 +19,7 @@ export class AppInterceptor implements HttpInterceptor {
             tap(
                 (req) => console.log(req)
             ),
-            // can catch all errors. instead of uzing component Observable error
+            // ! can catch all errors. instead of uzing component Observable error
             catchError((err) => {
                 if (err.status === 0) {
                     console.error(`Error from Interceptor: ${JSON.stringify(err)}`);
