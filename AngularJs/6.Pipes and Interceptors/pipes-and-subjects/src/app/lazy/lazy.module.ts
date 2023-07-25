@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LazyComponent } from './lazy/lazy.component';
+import { LazyRoutingModule } from './lazy.router';
 
 
 
@@ -9,7 +10,8 @@ import { LazyComponent } from './lazy/lazy.component';
     LazyComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, 
+    LazyRoutingModule
   ]
 })
 export class LazyModule { }
